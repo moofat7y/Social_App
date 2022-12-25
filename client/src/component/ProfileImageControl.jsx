@@ -7,22 +7,39 @@ import { BsPerson } from "react-icons/bs";
 
 const ProfileImageControl = ({ user, state }) => {
   const [file, setFile] = useState("");
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   useEffect(() => {
     const updateImage = async () => {
+      setLoading(true);
       const formData = new FormData();
       formData.append("image", file);
-      await dispatch(updateProfilePicture(formData, user.token));
-      toast.success("Profile picture updated", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      try {
+        await dispatch(updateProfilePicture(formData, user.token));
+        setLoading(false);
+        toast.success("Profile picture updated", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      } catch (error) {
+        setLoading(false);
+        toast.error(error.message, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
     };
 
     if (file) {
@@ -35,10 +52,12 @@ const ProfileImageControl = ({ user, state }) => {
       className={`profile-image bg-white border-5 border border-light
        overflow-hidden d-flex align-items-center justify-content-center rounded-circle position-absolute`}
     >
-      {state.user.profilePicture ? (
+      {loading ? (
+        <div className="w-100 h-100 rounded-circle skelton"></div>
+      ) : state.user.profilePicture ? (
         <LazyLoadImage
           effect="blur"
-          src={file ? URL.createObjectURL(file) : state.user.profilePicture.url}
+          src={state.user.profilePicture.url}
           className="w-100 border-0 rounded-circle h-100"
           alt=""
         />

@@ -118,7 +118,7 @@ export const updateProfilePicture = (formData, token) => async (dispatch) => {
 
     dispatch({ type: "UPADTE_PROFILEIMAGE", payload: data });
   } catch (err) {
-    dispatch({ type: "UPDATED_PRIFLEIMAGEFAILED" });
+    throw new Error(err.response.data.message);
   }
 };
 export const updateCoverImage = (formData, token) => async (dispatch) => {
@@ -130,7 +130,7 @@ export const updateCoverImage = (formData, token) => async (dispatch) => {
     });
     dispatch({ type: "UPADTE_COVERIMAGE", payload: data.updatedUser });
   } catch (err) {
-    dispatch({ type: "UPDATED_COVERFAILED" });
+    throw new Error(err.response.data.message);
   }
 };
 export const commentOnPost = (postId, commentId) => (dispatch) => {

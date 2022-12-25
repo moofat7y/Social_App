@@ -91,8 +91,20 @@ const Comments = ({ post, setShowComment, showComments }) => {
       {showComments ? (
         <div className="comments-control mt-2">
           <div className="write-comment mb-3 d-flex align-items-center">
-            <div className="profilePic ">
-              <img className="rounded-circle w-100 h-100" src={image} alt="" />
+            <div
+              className={`profilePic rounded-circle d-flex align-items-center justify-content-center ${
+                post.userId.profilePicture ? "" : "border border-2 border-light"
+              }`}
+            >
+              {post.userId.profilePicture ? (
+                <img
+                  src={post.userId.profilePicture.url}
+                  className="w-100 rounded-circle h-100"
+                  alt=""
+                />
+              ) : (
+                <i className="bi bi-person fs-4"></i>
+              )}
             </div>
             <form onSubmit={(e) => onSubmit(e)} className="d-flex w-100">
               <input

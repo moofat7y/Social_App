@@ -11582,45 +11582,45 @@ input:-internal-autofill-selected {
   min-height: 2rem;
 }
 
-.post-reaction i {
+.post-reaction svg {
   transition: 0.2s;
 }
-.post-reaction i:hover {
+.post-reaction svg:hover {
   color: var(--bs-primary);
 }
 .post-reaction .like {
   cursor: pointer;
 }
-.post-reaction .like:hover i {
+.post-reaction .like:hover svg {
   color: var(--bs-primary);
 }
-.post-reaction .like i:nth-child(2) {
+.post-reaction .like svg:nth-child(2) {
   opacity: 0;
 }
-.post-reaction .like.liked i:nth-child(1) {
+.post-reaction .like.liked svg:nth-child(1) {
   opacity: 0;
 }
-.post-reaction .like.liked i:nth-child(2) {
+.post-reaction .like.liked svg:nth-child(2) {
   opacity: 1;
   color: var(--bs-primary) !important;
 }
 .post-reaction .bookmark {
   cursor: pointer;
 }
-.post-reaction .bookmark:hover i {
+.post-reaction .bookmark:hover svg {
   color: var(--bs-black) !important;
 }
-.post-reaction .bookmark i:nth-child(2) {
+.post-reaction .bookmark svg:nth-child(2) {
   opacity: 0;
 }
-.post-reaction .bookmark.bookmarked i:nth-child(1) {
+.post-reaction .bookmark.bookmarked svg:nth-child(1) {
   opacity: 0;
 }
-.post-reaction .bookmark.bookmarked i:nth-child(2) {
+.post-reaction .bookmark.bookmarked svg:nth-child(2) {
   opacity: 1;
   color: var(--bs-black) !important;
 }
-.post-reaction i {
+.post-reaction svg {
   cursor: pointer;
 }
 
@@ -11634,22 +11634,22 @@ input:-internal-autofill-selected {
 .comment .comment-content .like {
   cursor: pointer;
 }
-.comment .comment-content .like i {
+.comment .comment-content .like svg {
   transition: 0.2s;
 }
-.comment .comment-content .like i:hover {
+.comment .comment-content .like svg:hover {
   color: var(--bs-primary);
 }
-.comment .comment-content .like i:nth-child(1) {
+.comment .comment-content .like svg:nth-child(1) {
   opacity: 1;
 }
-.comment .comment-content .like i:nth-child(2) {
+.comment .comment-content .like svg:nth-child(2) {
   opacity: 0;
 }
-.comment .comment-content .like.liked i:nth-child(1) {
+.comment .comment-content .like.liked svg:nth-child(1) {
   opacity: 0;
 }
-.comment .comment-content .like.liked i:nth-child(2) {
+.comment .comment-content .like.liked svg:nth-child(2) {
   opacity: 1;
 }
 

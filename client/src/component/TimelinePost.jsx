@@ -7,6 +7,7 @@ import { deletePost, likePost } from "../actions";
 import BookMark from "./BookMark";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import {
+  BsChatDots,
   BsHeart,
   BsHeartFill,
   BsPerson,
@@ -144,10 +145,10 @@ const TimelinePost = ({ post }) => {
           <BsHeart className="fs-5 " />
           <BsHeartFill className="text-primary fs-5 position-absolute" />
         </div>
-        <i
+        <BsChatDots
           onClick={() => setShowComment((prev) => !prev)}
-          className="bi bi-chat-dots fs-5 mx-3 comment"
-        ></i>
+          className="fs-5 mx-3 comment"
+        />
         <BsShare className="fs-5 share" />
         <BookMark post={post} />
       </div>

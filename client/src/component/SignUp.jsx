@@ -35,7 +35,8 @@ const SignUp = ({ setActiveView }) => {
     }
   };
   const validateEmail = (email) => {
-    const pattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+    const pattern =
+      /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
     setSignUpData((prev) => {
       return { ...prev, email: email };
     });

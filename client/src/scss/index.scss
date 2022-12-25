@@ -372,7 +372,7 @@ input:-internal-autofill-selected {
 
 // Timeline
 .post-reaction {
-  i {
+  svg {
     transition: 0.2s;
     &:hover {
       color: var(--bs-primary);
@@ -381,18 +381,18 @@ input:-internal-autofill-selected {
   .like {
     cursor: pointer;
     &:hover {
-      i {
+      svg {
         color: var(--bs-primary);
       }
     }
-    i:nth-child(2) {
+    svg:nth-child(2) {
       opacity: 0;
     }
     &.liked {
-      i:nth-child(1) {
+      svg:nth-child(1) {
         opacity: 0;
       }
-      i:nth-child(2) {
+      svg:nth-child(2) {
         opacity: 1;
         color: var(--bs-primary) !important;
       }
@@ -401,24 +401,24 @@ input:-internal-autofill-selected {
   .bookmark {
     cursor: pointer;
     &:hover {
-      i {
+      svg {
         color: var(--bs-black) !important;
       }
     }
-    i:nth-child(2) {
+    svg:nth-child(2) {
       opacity: 0;
     }
     &.bookmarked {
-      i:nth-child(1) {
+      svg:nth-child(1) {
         opacity: 0;
       }
-      i:nth-child(2) {
+      svg:nth-child(2) {
         opacity: 1;
         color: var(--bs-black) !important;
       }
     }
   }
-  i {
+  svg {
     cursor: pointer;
   }
 }
@@ -432,23 +432,23 @@ input:-internal-autofill-selected {
     }
     .like {
       cursor: pointer;
-      i {
+      svg {
         transition: 0.2s;
         &:hover {
           color: var(--bs-primary);
         }
       }
-      i:nth-child(1) {
+      svg:nth-child(1) {
         opacity: 1;
       }
-      i:nth-child(2) {
+      svg:nth-child(2) {
         opacity: 0;
       }
       &.liked {
-        i:nth-child(1) {
+        svg:nth-child(1) {
           opacity: 0;
         }
-        i:nth-child(2) {
+        svg:nth-child(2) {
           opacity: 1;
         }
       }

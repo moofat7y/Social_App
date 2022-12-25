@@ -33,8 +33,8 @@ const BookMark = ({ post }) => {
       }`}
       onClick={() => handleBookMark()}
     >
-      <BsBookmark className=" fs-5" />
-      <BsBookmarkFill className=" text-primary fs-5 position-absolute" />
+      <BsBookmark className="fs-5" />
+      <BsBookmarkFill className=" text-black fs-5 position-absolute" />
     </div>
   );
 };

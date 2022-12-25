@@ -7,13 +7,17 @@ const AddStorie = () => {
   const user = useSelector((state) => state.auth);
   return (
     <div className="storie position-relative me-2 ">
-      <LazyLoadImage
-        effect="blur"
-        src={user.userData.coverPicture.url}
-        className="rounded-4 storie-image w-100 h-100"
-        alt=""
-      />
-      <div className="user-image border d-flex justify-content-center aling-items-center border-2 border-primary rounded-circle position-absolute">
+      {user.userData.coverPicture ? (
+        <LazyLoadImage
+          effect="blur"
+          src={user.userData.coverPicture.url}
+          className="rounded-4 storie-image w-100 h-100"
+          alt=""
+        />
+      ) : (
+        <div className="position-absolute rounded-4 w-100 h-100 bg-white"></div>
+      )}
+      <div className="user-image border d-flex justify-content-center align-items-center border-2 border-primary rounded-circle position-absolute">
         {user.userData.profilePicture ? (
           <img
             src={user.userData.profilePicture.url}
@@ -26,7 +30,7 @@ const AddStorie = () => {
       </div>
       <div
         onClick={() => setModalShow(true)}
-        className="upload-storie d-flex align-items-center justify-content-center bg-white rounded-circle position-absolute  top-50 start-50 translate-middle"
+        className="upload-storie d-flex align-items-center justify-content-center bg-light rounded-circle position-absolute  top-50 start-50 translate-middle"
       >
         <i className="bi bi-plus-lg fs-5 text-primary fw-bold"></i>
       </div>

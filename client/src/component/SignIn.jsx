@@ -22,8 +22,7 @@ const SignIn = ({ setActiveView }) => {
         })
       );
       setLoadding(false);
-
-      navigate("/");
+      window.location.replace("/");
     } catch (err) {
       setLoadding(false);
       setError(err.message);

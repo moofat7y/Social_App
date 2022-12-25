@@ -11,7 +11,8 @@ const NotificationLink = () => {
       to="/notifications"
       className="nav-link d-flex align-items-center "
     >
-      <BsBell className="bi bi-bell fs-5 position-relative me-md-3">
+      <div className="position-relative me-md-3">
+        <BsBell className="bi bi-bell fs-5 "></BsBell>
         {notify.data.length > 0 ? (
           <span className="notify-length border border-light position-absolute top-0 start-50 text-light d-flex align-items-center justify-content-center my-auto ms-auto rounded-circle bg-primary">
             {notify.data.length}
@@ -19,7 +20,8 @@ const NotificationLink = () => {
         ) : (
           ""
         )}
-      </BsBell>
+      </div>
+
       <span className="d-none d-md-inline">Notifications</span>
     </NavLink>
   );

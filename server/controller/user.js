@@ -66,16 +66,16 @@ exports.putUser = async (req, res, next) => {
 exports.updateProfilePicture = async (req, res, next) => {
   let image;
   let imagePath = req.file?.path.replace("\\", "/");
-  console.log("continru");
   try {
     if (!imagePath) {
       image = "";
     } else {
-      const upload = await cloudUpload(req.file.path, "Profile images");
+      const filepath = await compressImage(req.file.filename);
+      const upload = await cloudUpload(filepath, "Profile images");
       image = {
         public_id: upload.public_id,
         url: upload.secure_url,
-        path: imagePath,
+        path: filepath,
       };
     }
     const user = await User.findById(req.userId);

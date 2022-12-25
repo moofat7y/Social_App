@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import api from "../api/api";
 import SearchUserCard from "./SearchUserCard";
-
+import { BsSearch } from "react-icons/bs";
 const SearchBar = () => {
   const [search, setSearch] = useState("");
   const [debounced, setDebounced] = useState("");
@@ -66,7 +66,7 @@ const SearchBar = () => {
             aria-hidden="true"
           ></span>
         ) : (
-          <i className="bi bi-search"></i>
+          <BsSearch />
         )}
       </div>
       <input

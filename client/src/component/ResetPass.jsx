@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../api/api";
 
@@ -88,9 +89,9 @@ const ResetPass = () => {
           >
             {" "}
             {passwordShow ? (
-              <i className="bi bi-eye text-primary"></i>
+              <BsEye className="]text-primary" />
             ) : (
-              <i className="bi bi-eye-slash text-primary"></i>
+              <BsEyeSlash className="text-primary" />
             )}
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { BsPerson } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 const Storie = ({ story }) => {
   return (
@@ -21,7 +22,7 @@ const Storie = ({ story }) => {
             alt=""
           />
         ) : (
-          <i className="bi bi-person fs-4 text-primary"></i>
+          <BsPerson className="fs-4 text-primary" />
         )}
       </div>
       <p className="username position-absolute fs-8">{story.userId.username}</p>

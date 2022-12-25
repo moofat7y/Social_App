@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
-
+import { BsPerson, BsBoxArrowLeft } from "react-icons/bs";
 const Header = () => {
   const onLogout = () => {
     window.localStorage.removeItem("profile");
@@ -28,9 +28,9 @@ const Header = () => {
           <div className="account d-flex col-4 col-sm-3 col-md-3 px-0 pe-2 align-items-center justify-content-end ">
             <div
               onClick={() => onLogout()}
-              className="logout me-2 btn bg-light d-flex align-items-center justify-content-center rounded-circle"
+              className="logout me-2 btn bg-light d-flex justify-content-center align-items-center rounded-circle"
             >
-              <i className="bi bi-box-arrow-left text-primary"></i>
+              <BsBoxArrowLeft className="fs-6 text-primary flex-1" />
             </div>
             <Link
               to={`profile/${auth.userData._id}`}
@@ -47,7 +47,7 @@ const Header = () => {
                   alt=""
                 />
               ) : (
-                <i className="bi bi-person fs-4"></i>
+                <BsPerson className="fs-4" />
               )}
             </Link>
           </div>

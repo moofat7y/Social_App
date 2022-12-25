@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { updateCoverImage } from "../actions";
 import { toast } from "react-toastify";
+import { BsImage, BsPerson } from "react-icons/bs";
 const CoverImageControl = ({ state }) => {
   const { auth } = useSelector((state) => state);
   const [file, setFile] = useState(null);
@@ -41,7 +42,7 @@ const CoverImageControl = ({ state }) => {
         htmlFor="upload"
         className="upload  end-0 position-absolute pt-2 px-3"
       >
-        <i className="bi bi-image text-info fs-5"></i>
+        <BsImage className="text-info fs-5" />
       </label>
       <input
         type="file"
@@ -60,7 +61,7 @@ const CoverImageControl = ({ state }) => {
         />
       ) : (
         <div className="w-100 h-100 rounded-4 bg-white d-flex justify-content-center align-items-center">
-          <i className="bi bi-person text-light display-1"></i>
+          <BsPerson className="text-light display-1" />
         </div>
       )}
     </div>

@@ -11426,6 +11426,9 @@ input:-internal-autofill-selected {
   width: 30px;
   height: 30px;
 }
+.header .account .logout svg {
+  flex-shrink: 0;
+}
 .header .account .profile {
   width: 2.5rem;
   height: 2.5rem;

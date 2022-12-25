@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { signIn } from "../actions";
 
@@ -68,9 +69,9 @@ const SignIn = ({ setActiveView }) => {
               className="show-hide d-flex justify-content-center align-items-center position-absolute"
             >
               {passwordShow ? (
-                <i className="bi bi-eye text-primary"></i>
+                <BsEye className="text-primary" />
               ) : (
-                <i className="bi bi-eye-slash text-primary"></i>
+                <BsEyeSlash className="text-primary" />
               )}
             </div>
           </div>

@@ -204,6 +204,9 @@ input:-internal-autofill-selected {
     .logout {
       width: 30px;
       height: 30px;
+      svg {
+        flex-shrink: 0;
+      }
     }
     .profile {
       width: 2.5rem;

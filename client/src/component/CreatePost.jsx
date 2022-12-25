@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { uploadNewPost } from "../actions";
+import { BsImages, BsPerson } from "react-icons/bs";
+
 const CreatePost = () => {
   const [file, setFile] = useState(null);
   const descRef = useRef();
@@ -35,7 +37,7 @@ const CreatePost = () => {
                 alt=""
               />
             ) : (
-              <i className="bi bi-person fs-5"></i>
+              <BsPerson className="fs-5" />
             )}
           </div>
           <input
@@ -80,8 +82,8 @@ const CreatePost = () => {
         <div className="upload px-4">
           <div className="form-group">
             <label htmlFor="file" className="d-flex align-items-center">
-              <i className="bi bi-images me-2 fs-5 text-warning"></i>
-              <span className="fs-7">Photo or video</span>
+              <BsImages className="me-2 fs-5 text-warning" />
+              <span className="fs-7">Photo</span>
             </label>
             <input
               onChange={(e) => setFile(e.target.files[0])}

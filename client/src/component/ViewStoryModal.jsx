@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
+import { BsPerson } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const ViewStoryModal = (props) => {
@@ -24,7 +25,7 @@ const ViewStoryModal = (props) => {
                 alt=""
               />
             ) : (
-              <i className="bi bi-person fs-4"></i>
+              <BsPerson className="fs-4" />
             )}
           </div>
           <div className="name ">{props.story?.userId.username}</div>

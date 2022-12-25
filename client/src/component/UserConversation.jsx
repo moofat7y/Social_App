@@ -3,6 +3,7 @@ import api from "../api/api";
 import InputEmoji from "react-input-emoji";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
+import { BsPerson } from "react-icons/bs";
 const UserConversation = ({
   receviedMessage,
   currentUser,
@@ -117,7 +118,7 @@ const UserConversation = ({
               alt=""
             />
           ) : (
-            <i className="bi bi-person fs-4"></i>
+            <BsPerson className="fs-4" />
           )}
         </Link>
         <div className="username">

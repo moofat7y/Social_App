@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import api from "../api/api";
+import { BsBookmark, BsBookmarkFill } from "react-icons/bs";
 
 const BookMark = ({ post }) => {
   const { auth } = useSelector((state) => state);
@@ -32,8 +33,8 @@ const BookMark = ({ post }) => {
       }`}
       onClick={() => handleBookMark()}
     >
-      <i className="bi bi-bookmark fs-5"></i>
-      <i className="bi bi-bookmark-fill text-primary fs-5 position-absolute"></i>
+      <BsBookmark className=" fs-5" />
+      <BsBookmarkFill className=" text-primary fs-5 position-absolute" />
     </div>
   );
 };

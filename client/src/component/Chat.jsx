@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import api from "../api/api";
 import SliderChatsLoading from "./SliderChatsLoading";
+import { BsPerson } from "react-icons/bs";
 
 const Chat = ({ chatData, currentUser, isActive }) => {
   const userChatId = chatData.members.filter(
@@ -55,7 +56,7 @@ const Chat = ({ chatData, currentUser, isActive }) => {
               alt=""
             />
           ) : (
-            <i className="bi bi-person fs-4"></i>
+            <BsPerson className=" fs-4" />
           )}
         </div>
         <div className="username">{userChat?.username}</div>

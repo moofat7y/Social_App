@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Notify from "../component/Notify";
+import { BsAppIndicator } from "react-icons/bs";
 const Notifications = () => {
   const { data } = useSelector((state) => state.notify);
 
@@ -13,7 +14,7 @@ const Notifications = () => {
         notifysComponenets
       ) : (
         <div className="w-100 h-100 d-flex align-items-center justify-content-center">
-          <i className="bi bi-app-indicator display-1 text-primary"></i>
+          <BsAppIndicator className="display-1 text-primary" />
         </div>
       )}
     </div>

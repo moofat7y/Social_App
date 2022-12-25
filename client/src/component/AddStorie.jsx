@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useSelector } from "react-redux";
 import StorieModal from "./StorieModal";
+import { BsPlus, BsPerson } from "react-icons/bs";
 const AddStorie = () => {
   const [modalShow, setModalShow] = useState(false);
   const user = useSelector((state) => state.auth);
@@ -25,14 +26,14 @@ const AddStorie = () => {
             alt=""
           />
         ) : (
-          <i className="bi bi-person fs-4 text-primary"></i>
+          <BsPerson className="fs-4 text-primary" />
         )}
       </div>
       <div
         onClick={() => setModalShow(true)}
         className="upload-storie d-flex align-items-center justify-content-center bg-light rounded-circle position-absolute  top-50 start-50 translate-middle"
       >
-        <i className="bi bi-plus-lg fs-5 text-primary fw-bold"></i>
+        <BsPlus className="fs-5 text-primary fw-bold" />
       </div>
       <StorieModal
         user={user}

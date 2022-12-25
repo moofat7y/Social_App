@@ -1,4 +1,5 @@
 import React from "react";
+import { BsPerson } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 const Notify = ({ notify }) => {
@@ -21,7 +22,7 @@ const Notify = ({ notify }) => {
               alt=""
             />
           ) : (
-            <i className="bi bi-person fs-4"></i>
+            <BsPerson className="fs-4" />
           )}
         </div>
         <div>

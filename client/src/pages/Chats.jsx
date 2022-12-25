@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import Chat from "../component/Chat";
 import SliderChatsLoading from "../component/SliderChatsLoading";
 import UserConversation from "../component/UserConversation";
+import { IoIosSend } from "react-icons/io";
 const Chats = () => {
   const user = useSelector((state) => state.auth);
   const chats = useSelector((state) => state.UserConversation);
@@ -76,7 +77,7 @@ const Chats = () => {
           />
         ) : (
           <div className="w-100 h-100 d-flex flex-column justify-content-center align-items-center text-primary">
-            <i className="bi bi-send-dash display-1"></i>
+            <IoIosSend className="bi bi-send-dash display-1" />
           </div>
         )}
       </div>

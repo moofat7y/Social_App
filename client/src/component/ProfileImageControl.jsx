@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { updateProfilePicture } from "../actions";
 import { toast } from "react-toastify";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { BsPerson } from "react-icons/bs";
+
 const ProfileImageControl = ({ user, state }) => {
   const [file, setFile] = useState("");
   const dispatch = useDispatch();
@@ -41,7 +43,7 @@ const ProfileImageControl = ({ user, state }) => {
           alt=""
         />
       ) : (
-        <i className="bi bi-person fs-1"></i>
+        <BsPerson className="fs-1" />
       )}
       {state.user._id === user.userData._id ? (
         <>

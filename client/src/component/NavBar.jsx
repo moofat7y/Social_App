@@ -3,6 +3,15 @@ import { Link } from "react-router-dom";
 import ModalControl from "./ModalControl";
 import UserDetailsCard from "./UserDetailsCard";
 import NotificationLink from "./NotificationLink";
+import {
+  BsHouseDoor,
+  BsCompass,
+  BsBookmarks,
+  BsChatRightDots,
+  BsGraphUp,
+  BsPalette,
+  BsGear,
+} from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 const NavBar = () => {
   const [modalShow, setModalShow] = useState(false);
@@ -18,33 +27,33 @@ const NavBar = () => {
             to="/"
             className="nav-link"
           >
-            <i className="bi bi-house-door fs-5 me-md-3"></i>
+            <BsHouseDoor className="bi fs-5 me-md-3" />
             <span className="d-none d-md-inline">Home</span>
           </NavLink>
           <NavLink to="discover" className="nav-link">
-            <i className="bi fs-5 me-md-3 bi-compass"></i>
+            <BsCompass className="bi fs-5 me-md-3 " />
             <span className="d-none d-md-inline">Discover</span>
           </NavLink>
           <NotificationLink />
           <NavLink to="/bookmarks" className="nav-link">
-            <i className="bi bi-bookmarks fs-5 me-md-3"></i>
+            <BsBookmarks className="bi fs-5 me-md-3" />
             <span className="d-none d-md-inline">Bookmarks</span>
           </NavLink>
           <NavLink to="/chats" className="nav-link">
-            <i className="bi bi-chat-right-dots fs-5 me-md-3"></i>
+            <BsChatRightDots className="bi fs-5 me-md-3" />
             <span className="d-none d-md-inline">Message</span>
           </NavLink>
 
           <Link to="/" className="nav-link">
-            <i className="bi bi-graph-up fs-5 me-md-3"></i>
+            <BsGraphUp className="bi fs-5 me-md-3" />
             <span className="d-none d-md-inline">Analytics</span>
           </Link>
           <Link to="#" onClick={() => setModalShow(true)} className="nav-link">
-            <i className="bi bi-palette fs-5 me-md-3"></i>
+            <BsPalette className="bi fs-5 me-md-3" />
             <span className="d-none d-md-inline">Theme</span>
           </Link>
           <Link to="/" className="nav-link">
-            <i className="bi bi-gear fs-5 me-md-3"></i>
+            <BsGear className="bi fs-5 me-md-3" />
             <span className="d-none d-md-inline">Settings</span>
           </Link>
         </ul>

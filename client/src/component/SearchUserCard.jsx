@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { BsPerson } from "react-icons/bs";
 const SearchUserCard = ({ user, setShowDropDown }) => {
   return (
     <Link
@@ -19,7 +20,7 @@ const SearchUserCard = ({ user, setShowDropDown }) => {
             alt=""
           />
         ) : (
-          <i className="bi bi-person fs-4"></i>
+          <BsPerson className="fs-4" />
         )}
       </div>
       <div className="username">{user.username}</div>

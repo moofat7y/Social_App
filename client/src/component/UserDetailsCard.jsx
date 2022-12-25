@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { BsPerson } from "react-icons/bs";
 const UserDetailsCard = () => {
   const user = useSelector((state) => state.auth);
   return (
@@ -21,7 +22,7 @@ const UserDetailsCard = () => {
             alt=""
           />
         ) : (
-          <i className="bi bi-person fs-4"></i>
+          <BsPerson className="fs-4" />
         )}
       </div>
 

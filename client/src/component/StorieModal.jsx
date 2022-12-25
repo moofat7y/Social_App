@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Dropdown, DropdownButton } from "react-bootstrap";
+import {
+  BsAlignBottom,
+  BsAlignEnd,
+  BsAlignStart,
+  BsAlignTop,
+  BsBack,
+  BsImage,
+  BsPerson,
+  BsType,
+} from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { createStory } from "../actions";
 const StorieModal = (props) => {
@@ -69,7 +79,7 @@ const StorieModal = (props) => {
                 alt=""
               />
             ) : (
-              <i className="bi bi-person fs-4"></i>
+              <BsPerson className="fs-4" />
             )}
           </div>
           <div className="name ">{props.user.userData.username}</div>
@@ -78,7 +88,7 @@ const StorieModal = (props) => {
         <div className="storie-control align-items-center bg-light d-flex w-100 py-2 px-4 mt-auto">
           <div className="upload-photo me-3">
             <label htmlFor="storie-photo">
-              <i className="bi bi-image fs-4"></i>
+              <BsImage className="fs-4" />
             </label>
             <input
               type="file"
@@ -93,7 +103,7 @@ const StorieModal = (props) => {
             className="type me-3"
             onClick={() => setTypeInput((prev) => !prev)}
           >
-            <i className="bi bi-type fs-4"></i>
+            <BsType className="fs-4"></BsType>
           </div>
           <div
             onClick={() =>
@@ -101,7 +111,7 @@ const StorieModal = (props) => {
             }
             className="bg-color px-2 me-3 rounded-3 bg-white"
           >
-            <i className="bi bi-type fs-4"></i>
+            <BsType className="fs-4" />
           </div>
 
           <div
@@ -110,7 +120,7 @@ const StorieModal = (props) => {
               setBackColor((prev) => (prev === 5 ? (prev = 0) : prev + 1))
             }
           >
-            <i className="bi bi-back fs-4"></i>
+            <BsBack className="fs-4" />
           </div>
           <div className="type-control">
             <DropdownButton
@@ -124,28 +134,28 @@ const StorieModal = (props) => {
                 as="button"
                 onClick={() => setAlignment("start-75 top-50")}
               >
-                <i className="bi bi-align-end"></i>
+                <BsAlignEnd />
               </Dropdown.Item>
               <Dropdown.Item
                 className="bg-light text-info text-center"
                 as="button"
                 onClick={() => setAlignment("start-25 top-50")}
               >
-                <i className="bi bi-align-start"></i>
+                <BsAlignStart />
               </Dropdown.Item>
               <Dropdown.Item
                 className="bg-light text-info text-center"
                 as="button"
                 onClick={() => setAlignment("start-50 top-25")}
               >
-                <i className="bi bi-align-top"></i>
+                <BsAlignTop />
               </Dropdown.Item>
               <Dropdown.Item
                 className="bg-light text-info text-center"
                 as="button"
                 onClick={() => setAlignment("top-75 start-50")}
               >
-                <i className="bi bi-align-bottom"></i>
+                <BsAlignBottom className="" />
               </Dropdown.Item>
             </DropdownButton>
           </div>

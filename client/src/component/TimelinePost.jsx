@@ -6,6 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { deletePost, likePost } from "../actions";
 import BookMark from "./BookMark";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import {
+  BsHeart,
+  BsHeartFill,
+  BsPerson,
+  BsShare,
+  BsThreeDots,
+} from "react-icons/bs";
 const TimelinePost = ({ post }) => {
   let user = JSON.parse(window.localStorage.getItem("profile"));
   const [liked, setLike] = useState(false);
@@ -67,7 +74,7 @@ const TimelinePost = ({ post }) => {
               alt=""
             />
           ) : (
-            <i className="bi bi-person fs-4"></i>
+            <BsPerson className="fs-4" />
           )}
         </Link>
         <div className="post-user">
@@ -82,7 +89,7 @@ const TimelinePost = ({ post }) => {
           className="post-control ms-auto position-relative ps-1 mb-auto"
           onClick={() => setDropDown((prev) => !prev)}
         >
-          <i className="bi bi-three-dots fs-6 text-dark"></i>
+          <BsThreeDots className="fs-6 text-dark" />
           {dropDown ? (
             <div className="dropdown shadow-sm position-absolute top-50 end-100 d-flex flex-column align-items-center">
               {post.userId._id === user.userData._id ? (
@@ -134,14 +141,14 @@ const TimelinePost = ({ post }) => {
             liked ? "liked" : ""
           }`}
         >
-          <i className="bi bi-heart fs-5 "></i>
-          <i className="bi bi-heart-fill text-primary fs-5 position-absolute"></i>
+          <BsHeart className="fs-5 " />
+          <BsHeartFill className="text-primary fs-5 position-absolute" />
         </div>
         <i
           onClick={() => setShowComment((prev) => !prev)}
           className="bi bi-chat-dots fs-5 mx-3 comment"
         ></i>
-        <i className="bi bi-share fs-5 share"></i>
+        <BsShare className="fs-5 share" />
         <BookMark post={post} />
       </div>
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { BsPerson } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { commentOnPost } from "../actions";
 import { createNotify } from "../actions/NotifyAction";
@@ -103,7 +104,7 @@ const Comments = ({ post, setShowComment, showComments }) => {
                   alt=""
                 />
               ) : (
-                <i className="bi bi-person fs-4"></i>
+                <BsPerson className="fs-4" />
               )}
             </div>
             <form onSubmit={(e) => onSubmit(e)} className="d-flex w-100">

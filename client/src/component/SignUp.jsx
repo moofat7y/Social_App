@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { signUp } from "../actions";
 import { toast } from "react-toastify";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 const SignUp = ({ setActiveView }) => {
   const [passwordShow, setPasswordShow] = useState(false);
   const [emailIsValid, setEmailValid] = useState(null);
@@ -212,9 +213,9 @@ const SignUp = ({ setActiveView }) => {
             className="show-hide d-flex justify-content-center align-items-center position-absolute"
           >
             {passwordShow ? (
-              <i className="bi bi-eye text-primary"></i>
+              <BsEye className="text-primary" />
             ) : (
-              <i className="bi bi-eye-slash text-primary"></i>
+              <BsEyeSlash className="text-primary" />
             )}
           </div>
         </div>

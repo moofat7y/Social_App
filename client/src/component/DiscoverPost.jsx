@@ -1,4 +1,5 @@
 import React from "react";
+import { BsChatDots, BsHeartFill } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link } from "react-router-dom";
 
@@ -21,11 +22,11 @@ const DiscoverPost = ({ post }) => {
 
         <div className="post-reactions d-flex justify-content-center align-items-center w-100 h-100 position-absolute">
           <span className="likes d-block me-3 text-center d-flex flex-column justify-content-center">
-            <i className="bi bi-heart-fill fs-4 text-primary"></i>
+            <BsHeartFill className="fs-4 text-primary" />
             <span className="text-info">{post.likes.length}</span>
           </span>
           <span className="comments d-block me-2 text-center d-flex flex-column justify-content-center">
-            <i className="bi bi-chat-dots fs-4 text-primary"></i>
+            <BsChatDots className="fs-4 text-primary" />
             <span className="text-info"> {post.comments.length}</span>
           </span>
         </div>

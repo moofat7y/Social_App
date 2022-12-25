@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 import { deleteComment } from "../actions";
 import { removeNotify } from "../actions/NotifyAction";
+import { BsHeart, BsHeartFill, BsPerson } from "react-icons/bs";
 import api from "../api/api";
 const Comment = ({ comment, userData, token, setComments, post }) => {
   const [likedComment, setLikedComment] = useState(false);
@@ -76,7 +77,7 @@ const Comment = ({ comment, userData, token, setComments, post }) => {
             alt=""
           />
         ) : (
-          <i className="bi bi-person fs-5"></i>
+          <BsPerson className="fs-5" />
         )}
       </Link>
 
@@ -90,8 +91,8 @@ const Comment = ({ comment, userData, token, setComments, post }) => {
               likedComment ? "liked" : ""
             }`}
           >
-            <i className="bi bi-heart fs-6 "></i>
-            <i className="bi bi-heart-fill fs-6 text-primary position-absolute"></i>
+            <BsHeart className="fs-6 " />
+            <BsHeartFill className="fs-6 text-primary position-absolute" />
           </div>
           <div className="count fs-7 text-info ms-2">{likesCount} Like</div>
           <div className="delete" onClick={() => onDeletePress()}>

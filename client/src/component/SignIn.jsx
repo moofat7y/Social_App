@@ -2,13 +2,14 @@ import React, { useRef, useState } from "react";
 import { BsEye, BsEyeSlash } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { signIn } from "../actions";
-
+import { useNavigate } from "react-router-dom";
 const SignIn = ({ setActiveView }) => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const [loadding, setLoadding] = useState(false);
   const [error, setError] = useState("");
   const [passwordShow, setPasswordShow] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const onFormSubmit = async (e) => {
     e.preventDefault();
@@ -22,7 +23,7 @@ const SignIn = ({ setActiveView }) => {
       );
       setLoadding(false);
 
-      window.location.reload();
+      navigate("/");
     } catch (err) {
       setLoadding(false);
       setError(err.message);

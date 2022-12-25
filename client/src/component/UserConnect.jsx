@@ -5,10 +5,8 @@ import SocketClient from "./SocketClient";
 const socket = io("https://social-app-socket-aqqi.onrender.com");
 const UserConnect = () => {
   const user = JSON.parse(window.localStorage.getItem("profile"));
-  console.log(socket);
   const [connect, setConnect] = useState(false);
   const dispatch = useDispatch();
-  console.log(connect);
 
   useEffect(() => {
     if (user) {

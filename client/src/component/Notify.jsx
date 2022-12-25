@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 const Notify = ({ notify }) => {
-  console.log(notify);
   return (
     <>
       <small>{format(notify.createdAt)}</small>

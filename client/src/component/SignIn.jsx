@@ -27,7 +27,6 @@ const SignIn = ({ setActiveView }) => {
       setError(err.message);
     }
   };
-  console.log(passwordShow);
   return (
     <div className="signin">
       {error ? <p className="text-danger text-center mb-0">{error}</p> : ""}

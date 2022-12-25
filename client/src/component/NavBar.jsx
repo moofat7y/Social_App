@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ModalControl from "./ModalControl";
 import UserDetailsCard from "./UserDetailsCard";
 import NotificationLink from "./NotificationLink";
 import { NavLink } from "react-router-dom";
 const NavBar = () => {
   const [modalShow, setModalShow] = useState(false);
-  const location = useLocation();
 
   return (
     <div className="px-0 sidenav py-2  position-fixed col-sm-2 col-md-6 col-lg-5 col-xl-4">

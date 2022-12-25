@@ -12,7 +12,7 @@ exports.createNotify = async (req, res, next) => {
       url,
       text,
       content,
-      image: image.url,
+      image: image ? image?.url : "",
       user: req.userId,
     });
 

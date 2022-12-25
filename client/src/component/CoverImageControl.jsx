@@ -51,7 +51,7 @@ const CoverImageControl = ({ state }) => {
       />
       {loading ? (
         <div className="w-100 h-100 rounded-4 skelton"></div>
-      ) : state.user.profilePicture ? (
+      ) : state.user.coverPicture ? (
         <LazyLoadImage
           effect="blur"
           className="w-100 h-100 rounded-4"

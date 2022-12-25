@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const multer = require("multer");
 dotenv.config();
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 const mongooseUri = process.env.MONGOOSE_URI;
 

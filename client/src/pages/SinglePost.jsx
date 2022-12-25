@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getSinglePost } from "../actions";
 import PostLoading from "../component/PostLoading";
-import TimelinePost from "../component/timelinePost";
+import TimelinePost from "../component/TimelinePost";
 
 const SinglePost = () => {
   const [loading, setLoading] = useState(false);

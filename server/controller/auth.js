@@ -22,6 +22,14 @@ exports.putSignup = async (req, res, next) => {
       email,
       password: hashedPassword,
     });
+    sendEmail(
+      email,
+      "Welcome to my app",
+      `<div style="max-width: 700px;margin:auto;border: 10px solid rgb(107,76,230);padding:50px 20px">
+      <h2 style="text-align:center;text-transform:uppercase;color: rgb(107,76,230)">SOCIAL_APP</h2>
+      <p>Successfuly signup</p>
+      </div>`
+    );
     await newUser.save();
     return res.status(201).json({ message: "Signed up successfuly" });
   } catch (err) {

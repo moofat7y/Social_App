@@ -27,7 +27,13 @@ router.put(
           return Promise.reject("This email already used");
         }
       }),
-    body("password").trim().isLength({ min: 6 }).isAlphanumeric(),
+    body(
+      "password",
+      "Password should be combination of one uppercase , one lower case, one special char, one digit and min 6 , max 20 char long"
+    )
+      .trim()
+      .isLength({ min: 6 })
+      .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d@$.!%*#?&]/),
   ],
   userControll.putSignup
 );

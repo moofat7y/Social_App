@@ -9,7 +9,7 @@ exports.putSignup = async (req, res, next) => {
   const errors = validationResult(req);
   try {
     if (!errors.isEmpty()) {
-      const error = new Error("Validation failed");
+      const error = new Error(errors.array()[0].msg);
       error.data = errors.array()[0];
       error.statusCode = 422;
       throw error;

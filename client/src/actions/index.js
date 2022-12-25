@@ -5,7 +5,7 @@ export const signUp = (formData) => async (dispatch) => {
     const { data } = await api.put("/register/signup", formData);
     dispatch({ type: "AUTH_SUCCESS", payload: data });
   } catch (err) {
-    throw new Error(err.response.data.message.msg);
+    throw new Error(err.response.data.message);
   }
 };
 

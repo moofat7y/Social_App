@@ -26,8 +26,7 @@ router.put(
         if (user) {
           return Promise.reject("This email already used");
         }
-      })
-      .normalizeEmail(),
+      }),
     body("password").trim().isLength({ min: 6 }).isAlphanumeric(),
   ],
   userControll.putSignup

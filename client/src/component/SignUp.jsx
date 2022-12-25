@@ -111,6 +111,7 @@ const SignUp = ({ setActiveView }) => {
         theme: "light",
       });
     } catch (err) {
+      console.log(err);
       setLoading(false);
       setErr(err.message);
     }

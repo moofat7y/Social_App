@@ -47,19 +47,25 @@ const CoverImageControl = ({ state }) => {
   }, [file]);
   return (
     <div className="cover-image mb-3 d-flex position-relative">
-      <label
-        role="button"
-        htmlFor="upload"
-        className="upload  end-0 position-absolute pt-2 px-3"
-      >
-        <BsImage className="text-info fs-5" />
-      </label>
-      <input
-        type="file"
-        id="upload"
-        className="d-none"
-        onChange={(e) => setFile(e.target.files[0])}
-      />
+      {state.user._id === auth.userData._id ? (
+        <>
+          <label
+            role="button"
+            htmlFor="upload"
+            className="upload  end-0 position-absolute pt-2 px-3"
+          >
+            <BsImage className="text-info fs-5" />
+          </label>
+          <input
+            type="file"
+            id="upload"
+            className="d-none"
+            onChange={(e) => setFile(e.target.files[0])}
+          />
+        </>
+      ) : (
+        ""
+      )}
       {loading ? (
         <div className="w-100 h-100 rounded-4 skelton"></div>
       ) : state.user.coverPicture ? (

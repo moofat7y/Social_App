@@ -230,7 +230,7 @@ const SignUp = ({ setActiveView }) => {
                 : ""
             }`}
           >
-            Must contian at least 1 lowercase characters
+            Must contain at least 1 lowercase character
           </span>
           <span
             className={`form-text fs-8 lh-sm d-block mb-1 ${
@@ -241,7 +241,7 @@ const SignUp = ({ setActiveView }) => {
                 : ""
             }`}
           >
-            Must contian at least 1 uppercase characters
+            Must contian at least 1 uppercase character
           </span>
           <span
             className={`form-text fs-8 lh-sm d-block mb-1 ${
@@ -252,7 +252,7 @@ const SignUp = ({ setActiveView }) => {
                 : ""
             }`}
           >
-            Must contian at least 1 numeric characters
+            Must contain at least 1 numeric character
           </span>
           <span
             className={`form-text fs-8 lh-sm d-block mb-1 ${
@@ -282,7 +282,7 @@ const SignUp = ({ setActiveView }) => {
           )}
         </button>
         <span className="d-block mx-auto">
-          Don't have an account?
+          Already have an acccount?
           <span
             className="text-primary signup-btn ms-1"
             onClick={() => setActiveView("signin")}

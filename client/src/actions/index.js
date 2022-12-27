@@ -105,7 +105,7 @@ export const updateProfile = (userId, formData, token) => async (dispatch) => {
     });
     dispatch({ type: "UPDATE_AUTH", payload: data });
   } catch (err) {
-    throw new Error(err.response.data.message.msg);
+    throw new Error(err.response.data.message);
   }
 };
 export const updateProfilePicture = (formData, token) => async (dispatch) => {

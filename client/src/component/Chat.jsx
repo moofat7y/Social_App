@@ -43,7 +43,7 @@ const Chat = ({ chatData, currentUser, isActive }) => {
           className={`profilePic position-relative d-flex align-items-center justify-content-center border border-2 border-primary rounded-circle`}
         >
           {isActive >= 0 ? (
-            <span className="position-absolute top-0 start-100 translate-middle p-2 bg-primary border border-3 border-light rounded-circle">
+            <span className="position-absolute active bg-primary border border-3 border-light rounded-circle">
               <span className="visually-hidden">New alerts</span>
             </span>
           ) : (
@@ -59,7 +59,7 @@ const Chat = ({ chatData, currentUser, isActive }) => {
             <BsPerson className=" fs-4" />
           )}
         </div>
-        <div className="username">{userChat?.username}</div>
+        <div className="username text-nowrap">{userChat?.username}</div>
       </Link>
     );
   };

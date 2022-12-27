@@ -122,9 +122,8 @@ const TimelinePost = ({ post }) => {
       </div>
 
       {post.image ? (
-        <div className="postImage mb-2">
+        <div className="postImage mb-3">
           <LazyLoadImage
-            // placeholderSrc={post.image.url}
             effect="blur"
             src={post.image.url}
             className="w-100 h-100 rounded-4"
@@ -132,10 +131,12 @@ const TimelinePost = ({ post }) => {
           />
         </div>
       ) : (
-        <p className="post-description lh-sm mb-1 px-1 fs-7">{post.desc}</p>
+        <p className="post-description lh-sm mb-1 px-2 fs-7 mb-3">
+          {post.desc}
+        </p>
       )}
 
-      <div className="post-reaction mb-2 px-3 d-flex align-items-center">
+      <div className="post-reaction mb-1 px-2 d-flex align-items-center">
         <div
           onClick={() => handleLike()}
           className={`like position-relative d-flex align-items-center justify-content-center ${
@@ -153,9 +154,12 @@ const TimelinePost = ({ post }) => {
         <BookMark post={post} />
       </div>
 
-      <div className="likes fs-7 px-1">{likes()}</div>
+      <div className="likes fs-7 lh-sm px-2">{likes()}</div>
       {post.image ? (
-        <p className="post-description lh-sm mb-1 px-1 fs-7">{post.desc}</p>
+        <p className="post-description lh-sm mb-1 px-2 fs-7">
+          <span className="fw-semibold ">{post.userId.username}</span>{" "}
+          {post.desc}
+        </p>
       ) : (
         ""
       )}

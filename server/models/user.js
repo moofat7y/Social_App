@@ -19,6 +19,7 @@ const userSchema = new Schema(
     gender: { type: String, default: "" },
     relationShip: { type: String, default: "" },
     story: { type: Object, default: "" },
+    verified: { type: Boolean, default: false },
   },
   {
     timestamps: true,

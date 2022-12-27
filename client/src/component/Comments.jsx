@@ -79,7 +79,7 @@ const Comments = ({ post, setShowComment, showComments }) => {
       {post.comments.length > 0 ? (
         <p
           onClick={() => setShowComment((prev) => !prev)}
-          className="fs-7 text-info comment-view"
+          className="fs-7 mb-0 text-info comment-view ps-2"
         >
           View {post.comments.length >= 2 ? "all" : ""} {post.comments.length}{" "}
           comment

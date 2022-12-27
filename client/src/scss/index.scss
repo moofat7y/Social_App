@@ -671,6 +671,13 @@ input:-internal-autofill-selected {
     scroll-snap-type: x mandatory;
     height: 10vh;
     align-items: center;
+    .active {
+      width: 0.95rem;
+      height: 0.95rem;
+      bottom: 0px;
+      right: 0px;
+      transform: translate(40%, 10%);
+    }
     &::-webkit-scrollbar {
       height: 0.25rem;
     }

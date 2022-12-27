@@ -11842,6 +11842,13 @@ input:-internal-autofill-selected {
   height: 10vh;
   align-items: center;
 }
+.chat .user-chats-slider .active {
+  width: 0.95rem;
+  height: 0.95rem;
+  bottom: 0px;
+  right: 0px;
+  transform: translate(40%, 10%);
+}
 .chat .user-chats-slider::-webkit-scrollbar {
   height: 0.25rem;
 }

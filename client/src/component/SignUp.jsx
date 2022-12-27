@@ -24,11 +24,12 @@ const SignUp = ({ setActiveView }) => {
     password: "",
   });
   const validateUserName = (username) => {
+    const pattern = /^(?=^[^_]+_?[^_]+$)\w{3,20}$/;
     setSignUpData((prev) => {
       return { ...prev, username: username };
     });
 
-    if (username.length >= 3) {
+    if (pattern.test(username)) {
       setUsernameValid(true);
     } else {
       setUsernameValid(false);
@@ -163,7 +164,7 @@ const SignUp = ({ setActiveView }) => {
             placeholder="username*"
           />
           <span
-            className={`form-text ${
+            className={`form-text lh-sm ${
               usernameIsValid === false
                 ? "text-danger"
                 : usernameIsValid === true
@@ -171,7 +172,7 @@ const SignUp = ({ setActiveView }) => {
                 : ""
             }`}
           >
-            Min length 3
+            Allowed characters are a-z, A-Z, 0-9, Special characters.
           </span>
         </div>
 

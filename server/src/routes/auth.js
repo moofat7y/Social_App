@@ -8,10 +8,11 @@ const isAuth = require("../middlewares/isAuth");
 router.put(
   "/signup",
   [
-    body("username")
-      .notEmpty()
-      .isLength({ min: 3 })
-      .withMessage("Invalid username")
+    body(
+      "username",
+      "Invalid username. Allowed characters are a-z, A-Z, 0-9, Special characters."
+    )
+      .matches(/^(?=^[^_]+_?[^_]+$)\w{3,20}$/)
       .custom(async (value, { req }) => {
         const user = await User.findOne({ username: value });
         if (user) {

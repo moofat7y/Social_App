@@ -66,6 +66,10 @@ const App = () => {
       </>
     );
   };
+
+  const AuthLayout = () => {
+    return <Outlet />;
+  };
   const router = createBrowserRouter([
     {
       path: "/",
@@ -111,17 +115,19 @@ const App = () => {
       path: "/auth",
       element: (
         <ProtectedAuth>
-          <Auth />
+          <AuthLayout />
         </ProtectedAuth>
       ),
-    },
-    {
-      path: "/user/reset/:token",
-      element: (
-        <ProtectedAuth>
-          <ResetPassword />
-        </ProtectedAuth>
-      ),
+      children: [
+        {
+          path: "/auth",
+          element: <Auth />,
+        },
+        {
+          path: "/auth/reset/:token",
+          element: <ResetPassword />,
+        },
+      ],
     },
   ]);
   return (

@@ -5,6 +5,7 @@ import ProfileModalEdit from "./ProfileModalEdit";
 import ProfileImageControl from "./ProfileImageControl";
 import { useNavigate } from "react-router-dom";
 import CoverImageControl from "./CoverImageControl";
+import { BsCheckCircleFill } from "react-icons/bs";
 const ProfileCard = ({ state }) => {
   const user = JSON.parse(window.localStorage.getItem("profile"));
   const conversation = useSelector((state) => state.UserConversation);
@@ -59,6 +60,11 @@ const ProfileCard = ({ state }) => {
           </span>
           <span className="d-block mb-1 username lh-sm text-info">
             {state?.user.username}
+            {state?.user.verified ? (
+              <BsCheckCircleFill className="ms-1 fs-8 text-primary" />
+            ) : (
+              ""
+            )}
           </span>
           <p className="description text-info">{state?.user.des}</p>
           <div className="user-status d-flex justify-content-center align-items-center">

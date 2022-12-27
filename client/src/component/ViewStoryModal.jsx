@@ -2,7 +2,7 @@ import React from "react";
 import { Modal } from "react-bootstrap";
 import { BsPerson } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-
+import { format } from "timeago.js";
 const ViewStoryModal = (props) => {
   return (
     <Modal
@@ -14,7 +14,7 @@ const ViewStoryModal = (props) => {
       <Modal.Body
         className={`p-0 position-relative storie-modal overflow-hidden rounded-4 text-center d-flex flex-column ${props.story?.bgColor}`}
       >
-        <div className="header bg-light d-flex align-items-center p-3">
+        <div className="header bg-light d-flex align-items-center px-3 py-2">
           <div
             className={`profilePic me-3 d-flex align-items-center justify-content-center border border-2 border-primary rounded-circle`}
           >
@@ -28,7 +28,12 @@ const ViewStoryModal = (props) => {
               <BsPerson className="fs-4" />
             )}
           </div>
-          <div className="name ">{props.story?.userId.username}</div>
+          <div className="d-flex flex-column align-items-start">
+            <p className="name mb-0 lh-sm">{props.story?.userId.username}</p>
+            <p className="text-info fs-8 mb-0 lh-sm">
+              {format(props.story?.createdAt)}
+            </p>
+          </div>
         </div>
 
         {props.story?.image ? (

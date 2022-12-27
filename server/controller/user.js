@@ -20,10 +20,9 @@ exports.putUser = async (req, res, next) => {
   const errors = validationResult(req);
   const userId = req.params.userId;
   const loggedUserId = req.userId;
-
   try {
     if (!errors.isEmpty()) {
-      const error = new Error("Validation failed");
+      const error = new Error(errors.array()[0].msg);
       error.data = errors.array()[0];
       error.statusCode = 422;
       throw error;

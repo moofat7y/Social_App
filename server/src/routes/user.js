@@ -8,9 +8,11 @@ router.patch(
   "/:userId",
   isAuth,
   [
-    body("username")
-      .isLength({ min: 3 })
-      .withMessage("Enter a usename with min length 3 charcters")
+    body(
+      "username",
+      "Invalid username. Allowed characters are a-z, A-Z, 0-9, Special characters."
+    )
+      .matches(/^(?=^[^_]+_?[^_]+$)\w{3,20}$/)
       .custom(async (value, { req }) => {
         const user = await User.findOne({ username: value });
         if (user) {

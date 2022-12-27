@@ -102,7 +102,7 @@ exports.forgotPassword = async (req, res, next) => {
       userId: user._id.toString(),
       email: user.email,
     });
-    const URL = `${process.env.CLIENT_URL}/user/reset/${access_token}/`;
+    const URL = `${process.env.CLIENT_URL}/auth/reset/${access_token}/`;
     sendEmail(
       email,
       "Reset your password",

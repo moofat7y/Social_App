@@ -18,9 +18,11 @@ const SendMessage = ({ chatId, receivedId }) => {
     };
 
     try {
-      await dispatch(
-        sendMessage(auth.token, chatId, newMessage, socketReduccer, socketMsg)
-      );
+      if (newMessage) {
+        await dispatch(
+          sendMessage(auth.token, chatId, newMessage, socketReduccer, socketMsg)
+        );
+      }
       setNewMessage("");
       setLoading(false);
     } catch (error) {

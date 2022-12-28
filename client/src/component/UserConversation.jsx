@@ -3,22 +3,13 @@ import api from "../api/api";
 import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import { BsCheckCircleFill, BsPerson } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import SendMessage from "./SendMessage";
 const UserConversation = ({ currentChat, isActive }) => {
   const [user, setUser] = useState(null);
-  const dispatch = useDispatch();
   const scroll = useRef();
-  const { Messages, auth, socketReduccer } = useSelector((state) => state);
+  const { Messages, auth } = useSelector((state) => state);
   const userId = currentChat?.members.find((id) => id !== auth?.userData._id);
-  useEffect(() => {
-    if (socketReduccer.connected) {
-      socketReduccer.on("receive-message", (data) => {
-        dispatch({ type: "SEND_MESSAGE", payload: data });
-        return;
-      });
-    }
-  }, []);
 
   useEffect(() => {
     const fetchUser = async () => {

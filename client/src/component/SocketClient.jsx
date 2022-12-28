@@ -47,9 +47,9 @@ const SocketClient = () => {
       theme: "light",
     });
   };
-
   useEffect(() => {
     socketReduccer.on("receive-message", (data) => {
+      dispatch({ type: "SEND_MESSAGE", payload: data });
       if (!(data.senderId === window.location.pathname.split("/")[2])) {
         return toast(`${data.senderName} send you a message`, {
           position: "top-right",
@@ -62,11 +62,9 @@ const SocketClient = () => {
           theme: "light",
         });
       }
-      return;
     });
-    return () => socketReduccer.off("createStory-client");
+    return () => socketReduccer.off("receive-message");
   }, [socketReduccer]);
-
   useEffect(() => {
     socketReduccer.on("createNotify-client", (data) => {
       dispatch({ type: "ADD_NOTIFY", payload: data });

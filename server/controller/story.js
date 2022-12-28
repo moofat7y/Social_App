@@ -78,7 +78,6 @@ exports.deleteImage = async (req, res, next) => {
       clearImage(story.image);
     }
 
-    console.log(story);
     res.status(200).json({ story });
   } catch (err) {
     if (!err.statusCode) {

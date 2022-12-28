@@ -27,6 +27,24 @@ exports.createNotify = async (req, res, next) => {
   }
 };
 
+// UPDATE is read
+exports.updatedIsRead = async (req, res, next) => {
+  const notifyId = req.params.id;
+  try {
+    const notify = await Notify.findByIdAndUpdate(
+      notifyId,
+      { isRead: true },
+      { new: true }
+    ).populate("user", "profilePic verified uesrname");
+    res.status(200).json({ notify });
+  } catch (error) {
+    if (!error.statusCode) {
+      error.statusCode = 500;
+    }
+    next(error);
+  }
+};
+
 exports.deleteNotify = async (req, res, next) => {
   const id = req.params.id;
   const url = req.query.url;
@@ -51,7 +69,6 @@ exports.getAllUserNotify = async (req, res, next) => {
 
     return res.status(200).json({ notifies });
   } catch (err) {
-    console.log(err);
     if (!err.statusCode) {
       err.statusCode = 500;
     }

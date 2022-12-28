@@ -7,6 +7,14 @@ const notifyReduccer = (
       return { ...state, data: action.payload };
     case "ADD_NOTIFY":
       return { ...state, data: [action.payload, ...state.data] };
+
+    case "UPDATE_ISREAD":
+      return {
+        ...state,
+        data: state.data.map((notify) =>
+          notify._id === action.payload._id ? action.payload : notify
+        ),
+      };
     case "DELETE_NOTIFY":
       return {
         ...state,

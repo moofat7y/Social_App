@@ -30,6 +30,23 @@ export const removeNotify =
     }
   };
 
+export const updatedIsRead = (token, notifyId) => async (dispatch) => {
+  try {
+    const { data } = await api.patch(
+      `notify/${notifyId}`,
+      {},
+      {
+        headers: {
+          Authorization: token,
+        },
+      }
+    );
+    dispatch({ type: "UPDATE_ISREAD", payload: data.notify });
+  } catch (error) {
+    throw new Error(error.response.data.message);
+  }
+};
+
 export const getNotifies = (token) => async (dispatch) => {
   try {
     const { data } = await api.get("notify/getNotifies", {

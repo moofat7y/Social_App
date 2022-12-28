@@ -5,7 +5,9 @@ import { BsBell } from "react-icons/bs";
 
 const NotificationLink = () => {
   const { notify } = useSelector((state) => state);
-
+  const notificationsCount = notify?.data?.filter(
+    (notify) => notify.isRead !== true
+  );
   return (
     <NavLink
       to="/notifications"
@@ -13,9 +15,9 @@ const NotificationLink = () => {
     >
       <div className="position-relative me-md-3">
         <BsBell className="bi bi-bell fs-5 "></BsBell>
-        {notify.data.length > 0 ? (
+        {notificationsCount.length > 0 ? (
           <span className="notify-length border border-light position-absolute top-0 start-50 text-light d-flex align-items-center justify-content-center my-auto ms-auto rounded-circle bg-primary">
-            {notify.data.length}
+            {notificationsCount.length}
           </span>
         ) : (
           ""

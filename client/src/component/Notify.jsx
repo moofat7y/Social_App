@@ -1,11 +1,29 @@
 import React from "react";
 import { BsCheckCircleFill, BsPerson } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
+import { updatedIsRead } from "../actions/NotifyAction";
 const Notify = ({ notify }) => {
+  const { auth } = useSelector((state) => state);
+  const dispatch = useDispatch();
+  const handleOnNotifyClick = async () => {
+    try {
+      if (!notify.isRead) {
+        dispatch(updatedIsRead(auth.token, notify._id));
+      }
+    } catch (error) {}
+  };
   return (
-    <>
-      <small>{format(notify.createdAt)}</small>
+    <div onClick={handleOnNotifyClick}>
+      <small className="d-flex">
+        {notify.isRead ? (
+          ""
+        ) : (
+          <span className="p-1 d-block my-auto rounded-circle bg-primary me-1"></span>
+        )}
+        {format(notify.createdAt)}
+      </small>
       <div className="notify mb-2 px-3 py-2 bg-white rounded-4 nav-link align-items-center d-flex">
         <Link
           to={`/profile/${notify.user._id}`}
@@ -56,7 +74,7 @@ const Notify = ({ notify }) => {
           )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

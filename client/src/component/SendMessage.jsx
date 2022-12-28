@@ -24,7 +24,6 @@ const SendMessage = ({ chatId, receivedId }) => {
       setNewMessage("");
       setLoading(false);
     } catch (error) {
-      console.log(error);
       setLoading(false);
     }
   };

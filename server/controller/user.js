@@ -92,7 +92,10 @@ exports.updateProfilePicture = async (req, res, next) => {
 
     res.status(201).json({ user: updatedUser });
   } catch (err) {
-    console.log(err);
+    if (!err.statusCode) {
+      err.statusCode = 500;
+    }
+    next(err);
   }
 };
 // UPDATE cover image
@@ -307,7 +310,6 @@ exports.getUserSuggetions = async (req, res, next) => {
 
     res.status(200).json({ users, length: users.length });
   } catch (error) {
-    console.log(error);
     if (!error.statusCode) {
       error.statusCode = 500;
     }

@@ -67,6 +67,8 @@ app.use((error, req, res, next) => {
   const message = error.message;
   res.status(status).json({ message });
 });
+
+mongoose.set("strictQuery", false);
 mongoose.connect(mongooseUri, () => {
   console.log("connected");
   app.listen(process.env.PORT || port);

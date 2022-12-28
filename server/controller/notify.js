@@ -17,7 +17,7 @@ exports.createNotify = async (req, res, next) => {
     });
 
     await notify.save();
-    await notify.populate("user", "profilePicture username");
+    await notify.populate("user", "profilePicture username verified");
     return res.status(201).json({ notify });
   } catch (error) {
     if (!error.statusCode) {
@@ -47,7 +47,7 @@ exports.getAllUserNotify = async (req, res, next) => {
   try {
     const notifies = await Notify.find({ recipients: req.userId })
       .sort({ createdAt: -1 })
-      .populate("user", "profilePicture username");
+      .populate("user", "profilePicture username verified");
 
     return res.status(200).json({ notifies });
   } catch (err) {

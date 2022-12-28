@@ -1,50 +1,35 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 import Chat from "../component/Chat";
-import SliderChatsLoading from "../component/SliderChatsLoading";
 import UserConversation from "../component/UserConversation";
 import { IoIosSend } from "react-icons/io";
+import { getSelectedUserChat } from "../actions";
 const Chats = () => {
-  const user = useSelector((state) => state.auth);
-  const chats = useSelector((state) => state.UserConversation);
-  const location = useLocation();
-  const [loadding, setLoadding] = useState(false);
-  const [sendMessage, setSendMessage] = useState(null);
-  const [receviedMessage, setReceivedMessage] = useState(null);
-  const { socketReduccer, ActiveUsers } = useSelector((state) => state);
+  const { userId } = useParams();
+  const dispatch = useDispatch();
+  const { ActiveUsers, auth, UserConversations } = useSelector(
+    (state) => state
+  );
   let activeUsers = ActiveUsers;
-
-  const selectedChatId = location.pathname.split("/")[2];
   const currentChat =
-    selectedChatId &&
-    (chats?.filter((chat) => chat.members.includes(selectedChatId)))[0];
+    userId && UserConversations?.find((chat) => chat.members.includes(userId));
   useEffect(() => {
-    if (socketReduccer.connected) {
-      if (sendMessage !== null) {
-        socketReduccer.emit("send-message", sendMessage);
-      }
+    if (currentChat) {
+      dispatch(getSelectedUserChat(auth.token, currentChat._id));
     }
-  }, [sendMessage]);
-
-  useEffect(() => {
-    if (socketReduccer.connected) {
-      socketReduccer.on("receive-message", (data) => {
-        setReceivedMessage(data);
-      });
-    }
-  }, []);
-  const renderedChats = chats.map((chat, index) => {
+  }, [currentChat]);
+  const renderedChats = UserConversations.map((chat, index) => {
     return (
       <div className="me-2" key={index}>
         <Chat
           chatData={chat}
-          currentUser={user}
+          currentUser={auth}
           isActive={activeUsers.findIndex(
             (auser) =>
               auser.userId ===
-              chat.members.find((member) => member !== user.userData._id)
+              chat.members.find((member) => member !== auth.userData._id)
           )}
         />
       </div>
@@ -53,27 +38,22 @@ const Chats = () => {
 
   return (
     <div className="chat d-flex flex-column">
-      <div className="user-chats-slider d-flex ">
-        {loadding ? <SliderChatsLoading /> : renderedChats}
-      </div>
+      <div className="user-chats-slider d-flex ">{renderedChats}</div>
       <div className="conversation h-100">
         {currentChat ? (
           <UserConversation
-            setSendMessage={setSendMessage}
-            currentUser={user}
             isActive={
               activeUsers.findIndex(
                 (auser) =>
                   auser.userId ===
                   currentChat.members.find(
-                    (member) => member !== user.userData._id
+                    (member) => member !== auth.userData._id
                   )
               ) >= 0
                 ? true
                 : false
             }
             currentChat={currentChat}
-            receviedMessage={receviedMessage}
           />
         ) : (
           <div className="w-100 h-100 d-flex flex-column justify-content-center align-items-center text-primary">

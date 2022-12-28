@@ -7,13 +7,15 @@ import ActiveUsers from "./ActiveUsers";
 import notifyReduccer from "./NotifyReduccer";
 import Story from "./Story";
 import suggistion from "./Suggistion";
+import messages from "./Messages";
 export const reduccers = combineReducers({
   auth,
   timeLineReduccer,
-  UserConversation,
+  UserConversations: UserConversation,
   socketReduccer,
   ActiveUsers,
   notify: notifyReduccer,
   stories: Story,
   Suggistion: suggistion,
+  Messages: messages,
 });

@@ -8,7 +8,7 @@ import CoverImageControl from "./CoverImageControl";
 import { BsCheckCircleFill } from "react-icons/bs";
 const ProfileCard = ({ state }) => {
   const user = JSON.parse(window.localStorage.getItem("profile"));
-  const conversation = useSelector((state) => state.UserConversation);
+  const conversation = useSelector((state) => state.UserConversations);
   const [modalShow, setModalShow] = useState(false);
   const [loadding, setLoadding] = useState(false);
   const socket = useSelector((state) => state.socketReduccer);
@@ -58,10 +58,10 @@ const ProfileCard = ({ state }) => {
           <span className="d-block name fs-5 lh-sm mb-0 fw-bold">
             {state?.user.firstname} {state?.user.lastname}
           </span>
-          <span className="d-block mb-1 username lh-sm text-info">
+          <span className="d-flex justify-content-center mb-1 username lh-sm text-info">
             {state?.user.username}
             {state?.user.verified ? (
-              <BsCheckCircleFill className="ms-1 fs-8 text-primary" />
+              <BsCheckCircleFill className="ms-1 my-auto fs-8 text-primary" />
             ) : (
               ""
             )}

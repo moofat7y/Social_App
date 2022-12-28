@@ -29,7 +29,7 @@ exports.putComment = async (req, res, next) => {
     post.comments.push(newComment._id);
     await post.save();
     await newComment.save();
-    await newComment.populate("userId", "_id profilePicture username");
+    await newComment.populate("userId", "_id profilePicture username verified");
     res.status(201).json({ comment: newComment });
   } catch (err) {
     if (!err.statusCode) {
@@ -54,7 +54,7 @@ exports.getAllPostComment = async (req, res, next) => {
     const comments = (
       await (
         await post.populate("comments")
-      ).populate("comments.userId", "profilePicture _id username")
+      ).populate("comments.userId", "profilePicture _id username verified")
     ).comments;
 
     res.status(200).json({ comments });
@@ -88,7 +88,10 @@ exports.likeDislikeComment = async (req, res, next) => {
       comment.likes = comment.likes.filter((id) => id !== String(req.userId));
     }
     const updatedComment = await comment.save();
-    await updatedComment.populate("userId", "_id profilePicture username");
+    await updatedComment.populate(
+      "userId",
+      "_id profilePicture username verified"
+    );
     res.status(201).json({ comment: updatedComment });
   } catch (err) {
     if (!err.statusCode) {
@@ -130,7 +133,7 @@ exports.deleteComment = async (req, res, next) => {
       error.statusCode = 403;
       throw error;
     }
-    await comment.populate("userId", "_id profilePicture username");
+    await comment.populate("userId", "_id profilePicture username verified");
     res.status(200).json({ comment });
   } catch (err) {
     if (!err) {

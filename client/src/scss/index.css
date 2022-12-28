@@ -11247,8 +11247,8 @@ html {
 }
 
 .profilePic {
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 2.3rem;
+  height: 2.3rem;
   flex-shrink: 0;
 }
 .profilePic img {
@@ -11411,7 +11411,13 @@ input:-internal-autofill-selected {
   width: 100%;
   top: calc(100% + 20px);
   z-index: 10000;
+  max-height: 60vh !important;
+  overflow-y: scroll;
+  overflow-x: hidden;
   left: 0px;
+}
+.header .search .search-dropdown::-webkit-scrollbar {
+  width: 0px;
 }
 .header .search .search-dropdown .user-card {
   transition: 0.2s;
@@ -11421,6 +11427,10 @@ input:-internal-autofill-selected {
 }
 .header .account {
   cursor: pointer;
+}
+.header .account .profilePic {
+  width: 2.3rem;
+  height: 2.3rem;
 }
 .header .account .logout {
   width: 30px;
@@ -11510,7 +11520,7 @@ input:-internal-autofill-selected {
     right: 1px;
     height: 80px;
     background-color: transparent;
-    width: 10px;
+    width: 20px;
     border-radius: 2px;
     top: 50%;
     transform: translate(100%, -50%);
@@ -11893,6 +11903,9 @@ input:-internal-autofill-selected {
 }
 .chat .conversation .react-emoji-picker--wrapper {
   overflow: inherit !important;
+}
+.chat .conversation .react-emoji-picker--wrapper .react-emoji-picker {
+  left: 50px;
 }
 .chat .conversation .react-input-emoji--container {
   background-color: transparent;

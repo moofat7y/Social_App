@@ -43,7 +43,9 @@ io.on("connection", (socket) => {
       });
     }
   });
-
+  // socket.on('likeComment',data =>{
+  //   const ids =
+  // })
   socket.on("add-conversation", (data) => {
     const clients = activeUsers.filter((user) =>
       data.members.includes(user.userId)

@@ -1,16 +1,14 @@
 import React from "react";
-import { BsPerson } from "react-icons/bs";
+import { BsCheckCircleFill, BsPerson } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 const Notify = ({ notify }) => {
   return (
     <>
       <small>{format(notify.createdAt)}</small>
-      <Link
-        to={notify.url}
-        className="notify mb-2 px-3 py-2 bg-white rounded-4 nav-link align-items-center d-flex"
-      >
-        <div
+      <div className="notify mb-2 px-3 py-2 bg-white rounded-4 nav-link align-items-center d-flex">
+        <Link
+          to={`/profile/${notify.user._id}`}
           className={`profilePic nav-link me-3 d-flex align-items-center justify-content-center ${
             notify.user.profilePicture ? "" : "border border-2 rounded-circle"
           }`}
@@ -24,20 +22,32 @@ const Notify = ({ notify }) => {
           ) : (
             <BsPerson className="fs-4" />
           )}
-        </div>
+        </Link>
         <div>
-          <div>
-            <strong className="me-2">{notify.user.username}</strong>
-            <span className="fs-7 text-info">{notify.text}</span>
+          <div className="d-flex">
+            <Link
+              to={`/profile/${notify.user._id}`}
+              className="me-2 fw-semibold nav-link d-flex"
+            >
+              {notify.user.username}
+              {notify.user.verified ? (
+                <BsCheckCircleFill className="ms-1 my-auto fs-8 text-primary" />
+              ) : (
+                ""
+              )}
+            </Link>
+            <Link to={notify.url} className="fs-7 nav-link text-info">
+              {notify.text}
+            </Link>
           </div>
           {notify.content && (
-            <small>
+            <Link to={notify.url} className="fs-8 nav-link">
               {notify.content.length > 20 ? (
                 <>{notify.content.slice(0, 20)}...</>
               ) : (
                 notify.content
               )}
-            </small>
+            </Link>
           )}
         </div>
         <div className="h-100 ms-auto">
@@ -45,7 +55,7 @@ const Notify = ({ notify }) => {
             <img className="image rounded-1" src={notify.image} />
           )}
         </div>
-      </Link>
+      </div>
     </>
   );
 };

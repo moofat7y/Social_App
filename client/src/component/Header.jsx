@@ -47,7 +47,7 @@ const Header = () => {
                   alt=""
                 />
               ) : (
-                <BsPerson className="fs-4" />
+                <BsPerson className="fs-5" />
               )}
             </Link>
           </div>

@@ -47,6 +47,26 @@ const SocketClient = () => {
       theme: "light",
     });
   };
+
+  useEffect(() => {
+    socketReduccer.on("receive-message", (data) => {
+      if (!(data.senderId === window.location.pathname.split("/")[2])) {
+        return toast(`${data.senderName} send you a message`, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }
+      return;
+    });
+    return () => socketReduccer.off("createStory-client");
+  }, [socketReduccer]);
+
   useEffect(() => {
     socketReduccer.on("createNotify-client", (data) => {
       dispatch({ type: "ADD_NOTIFY", payload: data });

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { BsPerson } from "react-icons/bs";
+import { BsCheckCircleFill, BsPerson } from "react-icons/bs";
 const SearchUserCard = ({ user, setShowDropDown }) => {
   return (
     <Link
@@ -23,7 +23,14 @@ const SearchUserCard = ({ user, setShowDropDown }) => {
           <BsPerson className="fs-4" />
         )}
       </div>
-      <div className="username">{user.username}</div>
+      <div className="username">
+        {user.username}
+        {user.verified ? (
+          <BsCheckCircleFill className="ms-1 fs-8 text-primary" />
+        ) : (
+          ""
+        )}
+      </div>
     </Link>
   );
 };

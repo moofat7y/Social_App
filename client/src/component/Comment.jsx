@@ -3,8 +3,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { format } from "timeago.js";
 import { deleteComment } from "../actions";
-import { removeNotify } from "../actions/NotifyAction";
-import { BsHeart, BsHeartFill, BsPerson } from "react-icons/bs";
+import { removeNotify, createNotify } from "../actions/NotifyAction";
+import {
+  BsCheckCircleFill,
+  BsHeart,
+  BsHeartFill,
+  BsPerson,
+} from "react-icons/bs";
 import api from "../api/api";
 const Comment = ({ comment, userData, token, setComments, post }) => {
   const [likedComment, setLikedComment] = useState(false);
@@ -16,16 +21,11 @@ const Comment = ({ comment, userData, token, setComments, post }) => {
         ? setLikedComment(true)
         : setLikedComment(false);
     }
+    setLikesCount(comment.likes.length);
   }, [comment.likes.length]);
-
   const onLikePress = async () => {
-    if (comment.likes.findIndex((id) => id === userData._id) >= 0) {
-      setLikesCount((prev) => prev - 1);
-      setLikedComment(false);
-    } else {
-      setLikesCount((prev) => prev + 1);
-      setLikedComment(true);
-    }
+    setLikedComment((prev) => (likedComment ? prev - 1 : prev + 1));
+    setLikedComment((prev) => !prev);
     const { data } = await api.patch(
       `/comment/like/${comment._id}`,
       {},
@@ -36,6 +36,18 @@ const Comment = ({ comment, userData, token, setComments, post }) => {
       }
     );
 
+    const msg = {
+      id: data.comment.userId._id,
+      text: "liked your Comment",
+      recipients: [data.comment.userId._id],
+      url: `/post/${data.comment.postId}`,
+      content: data.comment.comment,
+    };
+    if (!data.comment.likes.includes(userData._id)) {
+      dispatch(removeNotify({ msg, token, socket }));
+    } else {
+      dispatch(createNotify({ msg, token, socket }));
+    }
     setComments((prev) =>
       prev.map((comm) => (comm._id === comment._id ? data.comment : comm))
     );
@@ -82,7 +94,14 @@ const Comment = ({ comment, userData, token, setComments, post }) => {
       </Link>
 
       <div className="comment-content w-100">
-        <div className="name mb-1 fs-6">{comment.userId.username}</div>
+        <div className="name mb-1 lh-sm fs-6 d-flex">
+          {comment.userId.username}
+          {comment.userId.verified ? (
+            <BsCheckCircleFill className="ms-1 fs-8 text-primary my-auto" />
+          ) : (
+            ""
+          )}
+        </div>
         <p className="content mb-2 fs-8 lh-sm text-info">{comment.comment}</p>
         <div className="like-time me-2 d-flex align-items-center w-100">
           <div

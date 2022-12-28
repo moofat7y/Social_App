@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal } from "react-bootstrap";
-import { BsPerson } from "react-icons/bs";
+import { BsCheckCircleFill, BsPerson } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { format } from "timeago.js";
 const ViewStoryModal = (props) => {
@@ -29,7 +29,14 @@ const ViewStoryModal = (props) => {
             )}
           </div>
           <div className="d-flex flex-column align-items-start">
-            <p className="name mb-0 lh-sm">{props.story?.userId.username}</p>
+            <p className="name mb-0 d-flex lh-sm">
+              {props.story?.userId.username}
+              {props.story?.userId.verified ? (
+                <BsCheckCircleFill className="ms-1 fs-8 text-primary my-auto" />
+              ) : (
+                ""
+              )}
+            </p>
             <p className="text-info fs-8 mb-0 lh-sm">
               {format(props.story?.createdAt)}
             </p>

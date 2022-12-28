@@ -36,7 +36,10 @@ exports.createStory = async (req, res, next) => {
     user.story = image;
     await user.save();
     await newStory.save();
-    await newStory.populate("userId", "profilePicture username followers");
+    await newStory.populate(
+      "userId",
+      "profilePicture username followers verified"
+    );
 
     res.status(201).json({ story: newStory });
   } catch (error) {
@@ -52,7 +55,7 @@ exports.getAllFollowingsUsersStories = async (req, res, next) => {
     const user = await User.findById(req.userId);
     const stories = await Story.find({
       userId: { $in: [...user.followings, req.userId] },
-    }).populate("userId", "username profilePicture _id");
+    }).populate("userId", "username profilePicture _id verified");
     res.status(200).json({ stories });
   } catch (err) {
     if (!err.statusCode) {

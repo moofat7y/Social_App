@@ -1,5 +1,5 @@
 import React from "react";
-import { BsPerson } from "react-icons/bs";
+import { BsCheckCircleFill, BsPerson } from "react-icons/bs";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 const Storie = ({ story }) => {
   return (
@@ -25,7 +25,14 @@ const Storie = ({ story }) => {
           <BsPerson className="fs-4 text-primary" />
         )}
       </div>
-      <p className="username position-absolute fs-8">{story.userId.username}</p>
+      <span className="username position-absolute fs-8 d-flex">
+        {story.userId.username}
+        {story.userId.verified ? (
+          <BsCheckCircleFill className="ms-1 fs-8 text-primary my-auto" />
+        ) : (
+          ""
+        )}
+      </span>
     </div>
   );
 };

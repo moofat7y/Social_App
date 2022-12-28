@@ -80,7 +80,7 @@ const SearchBar = () => {
 
       <div
         ref={dropDownRef}
-        className={`search-dropdown shadow overflow-hidden rounded-4 bg-white position-absolute ${
+        className={`search-dropdown shadow  rounded-4 bg-white position-absolute ${
           showDropDown ? "d-block" : "d-none"
         }`}
       >

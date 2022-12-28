@@ -24,7 +24,7 @@ const SignUp = ({ setActiveView }) => {
     password: "",
   });
   const validateUserName = (username) => {
-    const pattern = /^(?=^[^_]+_?[^_]+$)\w{3,20}$/;
+    const pattern = /^(?!(?:[^.]*\.){2})[A-Za-z][A-Za-z0-9.]{3,19}$/;
     setSignUpData((prev) => {
       return { ...prev, username: username };
     });
@@ -172,7 +172,7 @@ const SignUp = ({ setActiveView }) => {
                 : ""
             }`}
           >
-            Allowed characters are a-z, A-Z, 0-9, Special characters.
+            Allowed characters are a-z, A-Z, 0-9, (_,-,.).
           </span>
         </div>
 

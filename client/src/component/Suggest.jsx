@@ -1,5 +1,5 @@
 import React from "react";
-import { BsPerson } from "react-icons/bs";
+import { BsCheckCircleFill, BsPerson } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import FollowBtn from "./FollowBtn";
 const Suggest = ({ user }) => {
@@ -19,7 +19,14 @@ const Suggest = ({ user }) => {
             )}
           </div>
           <div className="name">
-            <span className="d-block lh-sm fs-7">{user.username}</span>
+            <span className="d-block lh-sm fs-7 d-flex">
+              {user.username}
+              {user.verified ? (
+                <BsCheckCircleFill className="ms-1 fs-8 text-primary my-auto" />
+              ) : (
+                ""
+              )}
+            </span>
             <span className="lh-sm d-block text-info fs-7">
               {user.firstname} {user.lastname}
             </span>

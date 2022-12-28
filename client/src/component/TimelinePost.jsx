@@ -8,6 +8,7 @@ import BookMark from "./BookMark";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import {
   BsChatDots,
+  BsCheckCircleFill,
   BsHeart,
   BsHeartFill,
   BsPerson,
@@ -25,11 +26,8 @@ const TimelinePost = ({ post }) => {
   const dispatch = useDispatch();
   const handleLike = async () => {
     dispatch(likePost(post._id, user.token, socket, user.userData._id));
-    if (post.likes.findIndex((id) => id === user.userData._id) >= 0) {
-      setLikesCount((prev) => prev - 1);
-    } else {
-      setLikesCount((prev) => prev + 1);
-    }
+
+    setLikesCount((prev) => (liked ? prev - 1 : prev + 1));
     setLike((prev) => !prev);
   };
   useEffect(() => {
@@ -79,9 +77,17 @@ const TimelinePost = ({ post }) => {
           )}
         </Link>
         <div className="post-user">
-          <span className="d-block lh-sm fs-6 mb-0 name fw-bold">
+          <Link
+            to={`/profile/${post.userId._id}`}
+            className="d-flex nav-link lh-sm fs-6 mb-0 name fw-bold"
+          >
             {post.userId.username}
-          </span>
+            {post.userId.verified ? (
+              <BsCheckCircleFill className="ms-1 fs-8 text-primary my-auto" />
+            ) : (
+              ""
+            )}
+          </Link>
           <span className="d-block fs-8 text-dark">
             {format(post.createdAt)}
           </span>

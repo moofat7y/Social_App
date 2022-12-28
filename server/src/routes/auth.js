@@ -10,9 +10,9 @@ router.put(
   [
     body(
       "username",
-      "Invalid username. Allowed characters are a-z, A-Z, 0-9, Special characters."
+      "Invalid username. Allowed characters are a-z, A-Z, 0-9, (_,-,.)."
     )
-      .matches(/^(?=^[^_]+_?[^_]+$)\w{3,20}$/)
+      .matches(/^(?!(?:[^.]*\.){2})[A-Za-z][A-Za-z0-9.]{3,19}$/)
       .custom(async (value, { req }) => {
         const user = await User.findOne({ username: value });
         if (user) {

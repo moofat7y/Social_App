@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { BsPerson } from "react-icons/bs";
+import { BsCheckCircleFill, BsPerson } from "react-icons/bs";
 const UserDetailsCard = () => {
   const user = useSelector((state) => state.auth);
   return (
@@ -30,7 +30,14 @@ const UserDetailsCard = () => {
         <span className=" fw-bold name">
           {user.userData.firstname} {user.userData.lastname}
         </span>
-        <span className="username text-info">@{user.userData.username}</span>
+        <span className="username d-flex text-info">
+          @{user.userData.username}
+          {user.userData.verified ? (
+            <BsCheckCircleFill className="ms-1 my-auto fs-8 text-primary" />
+          ) : (
+            ""
+          )}
+        </span>
       </div>
     </Link>
   );

@@ -99,9 +99,12 @@ const App = () => {
           path: "/notifications",
           element: <Notifications />,
         },
-
         {
-          path: "/chats/*",
+          path: "/chats",
+          element: <Chats />,
+        },
+        {
+          path: "/chats/:userId",
           element: <Chats />,
         },
 

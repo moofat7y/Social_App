@@ -290,3 +290,44 @@ export const getUserSuggetions = (token) => async (dispatch) => {
     dispatch({ type: "SUGGITIONS", payload: data.users });
   } catch (error) {}
 };
+
+// Get selected user chat
+
+export const getSelectedUserChat = (token, currentChat) => async (dispatch) => {
+  try {
+    const { data } = await api.get(`/message/${currentChat}`, {
+      headers: {
+        Authorization: token,
+      },
+    });
+    dispatch({
+      type: "GET_MESSAGES",
+      payload: { chatId: currentChat, messages: data.messages },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// SEND message to user
+export const sendMessage =
+  (token, chatId, message, socket, socketMsg) => async (dispatch) => {
+    try {
+      const { data } = await api.post(
+        "message/",
+        { chatId, text: message },
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      socket.emit("send-message", {
+        ...socketMsg,
+        chatId: data.message.chatId,
+      });
+      dispatch({ type: "SEND_MESSAGE", payload: data.message });
+    } catch (error) {
+      throw new Error(error.response.data.message);
+    }
+  };

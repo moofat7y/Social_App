@@ -138,7 +138,7 @@ exports.getByUsername = async (req, res, next) => {
   const { userName } = req.params;
   const users = await User.find(
     { username: new RegExp(userName, "i") },
-    { profilePicture: 1, _id: 1, username: 1 }
+    { profilePicture: 1, _id: 1, username: 1, verified: 1 }
   );
 
   res.status(200).json({ users });
@@ -285,7 +285,7 @@ exports.getUserSuggetions = async (req, res, next) => {
           },
         },
       },
-      { $sample: { size: 8 } },
+      { $sample: { size: 6 } },
 
       {
         $lookup: {

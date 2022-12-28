@@ -51,7 +51,7 @@ exports.getPost = async (req, res, next) => {
   try {
     const userPost = await Post.findById(postId).populate(
       "userId likes",
-      "_id username profilePicture"
+      "_id username profilePicture verified"
     );
     if (!userPost) {
       const error = new Error("Post not found");
@@ -73,7 +73,7 @@ exports.getAllPost = async (req, res, next) => {
   try {
     const user = await User.findById(userId);
     const posts = await Post.find({ userId: userId })
-      .populate("userId", "username profilePicture _id")
+      .populate("userId", "username profilePicture _id verified")
       .sort({ createdAt: -1 });
     const { password, ...other } = user._doc;
     res.status(200).json({ user: other, posts: posts });
@@ -155,7 +155,7 @@ exports.likedislike = async (req, res, next) => {
   try {
     const post = await Post.findById(postId).populate(
       "userId",
-      "profilePicture username _id followers"
+      "profilePicture username _id followers verified"
     );
 
     if (!post) {
@@ -189,7 +189,7 @@ exports.getTimeline = async (req, res, next) => {
     const userFriendIds = user.followings;
     userFriendIds.push(req.userId);
     const timeline = await Post.find({ userId: { $in: userFriendIds } })
-      .populate("userId", "username profilePicture _id")
+      .populate("userId", "username profilePicture _id verified")
       .sort({ createdAt: -1 });
 
     res.status(200).json(timeline);

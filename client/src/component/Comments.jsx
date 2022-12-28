@@ -94,12 +94,12 @@ const Comments = ({ post, setShowComment, showComments }) => {
           <div className="write-comment mb-3 d-flex align-items-center">
             <div
               className={`profilePic rounded-circle d-flex align-items-center justify-content-center ${
-                post.userId.profilePicture ? "" : "border border-2 border-light"
+                userData.profilePicture ? "" : "border border-2 border-light"
               }`}
             >
-              {post.userId.profilePicture ? (
+              {userData.profilePicture ? (
                 <img
-                  src={post.userId.profilePicture.url}
+                  src={userData.profilePicture.url}
                   className="w-100 rounded-circle h-100"
                   alt=""
                 />

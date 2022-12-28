@@ -10,6 +10,9 @@ const messages = (state = { chatId: "", messages: [] }, action) => {
             ? [...state.messages, action.payload]
             : state.messages,
       };
+
+    case "SELECTED_NULL":
+      return { chatId: "", messages: [] };
     default:
       return state;
   }

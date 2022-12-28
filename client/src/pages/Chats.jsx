@@ -18,6 +18,8 @@ const Chats = () => {
   useEffect(() => {
     if (currentChat) {
       dispatch(getSelectedUserChat(auth.token, currentChat._id));
+    } else {
+      dispatch({ type: "SELECTED_NULL" });
     }
   }, [currentChat]);
   const renderedChats = UserConversations.map((chat, index) => {

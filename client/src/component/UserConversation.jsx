@@ -18,7 +18,6 @@ const UserConversation = ({ currentChat, isActive }) => {
         return;
       });
     }
-    return () => socketReduccer.off("receive-message");
   }, []);
 
   useEffect(() => {

@@ -18,7 +18,7 @@ exports.createAndDeleteBookMark = async (req, res, next) => {
     ) {
       post.bookmark = post.bookmark.filter((id) => id !== req.userId);
       await post.save();
-      await Bookmark.findOneAndDelete({ postId: post._id });
+      await Bookmark.findOneAndDelete({ postId: post._id, userId: req.userId });
       res.status(200).json({ postId });
     } else {
       const newBookMark = new Bookmark({ postId, userId: req.userId });
@@ -41,7 +41,7 @@ exports.getAllBookMarks = async (req, res, next) => {
   try {
     const bookMarks = await Bookmark.find({
       userId: new mongoose.Types.ObjectId(req.userId),
-    }).populate("userId postId", "username profilePicture image");
+    }).populate("userId postId", "username profilePicture image desc");
     res.status(200).json(bookMarks);
   } catch (err) {
     if (!err.statusCode) {

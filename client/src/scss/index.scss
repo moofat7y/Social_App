@@ -675,11 +675,13 @@ input:-internal-autofill-selected {
 
 // /////////////////// Messages page ////////////////////
 .chat {
-  height: 90vh;
+  height: calc(94vh - 2rem);
   .user-chats-slider {
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
-    height: 10vh;
+    height: calc(15vh - 2rem);
+    min-height: calc(90px - 1rem);
+    overflow-y: hidden;
     align-items: center;
     .active {
       width: 0.95rem;
@@ -702,7 +704,7 @@ input:-internal-autofill-selected {
     }
   }
   .conversation {
-    height: 80vh !important;
+    height: calc(100% - 2rem) !important;
     .header {
       border-bottom: 1px solid var(--bs-light);
     }
@@ -855,6 +857,8 @@ input:-internal-autofill-selected {
     .fading-line {
       height: 28px;
       width: 3.5px;
+      flex-grow: 1;
+      flex-shrink: 0;
       &:nth-child(2) {
         margin-top: 2px;
       }

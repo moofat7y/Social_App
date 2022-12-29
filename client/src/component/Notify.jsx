@@ -27,7 +27,7 @@ const Notify = ({ notify }) => {
       <div className="notify mb-2 px-3 py-2 bg-white rounded-4 nav-link align-items-center d-flex">
         <Link
           to={`/profile/${notify.user._id}`}
-          className={`profilePic nav-link me-3 d-flex align-items-center justify-content-center ${
+          className={`profilePic nav-link me-2 d-flex align-items-center justify-content-center ${
             notify.user.profilePicture ? "" : "border border-2 rounded-circle"
           }`}
         >
@@ -42,22 +42,23 @@ const Notify = ({ notify }) => {
           )}
         </Link>
         <div>
-          <div className="d-flex">
-            <Link
-              to={`/profile/${notify.user._id}`}
-              className="me-2 fw-semibold nav-link d-flex"
-            >
-              {notify.user.username}
-              {notify.user.verified ? (
-                <BsCheckCircleFill className="ms-1 my-auto fs-8 text-primary" />
-              ) : (
-                ""
-              )}
-            </Link>
-            <Link to={notify.url} className="fs-7 nav-link text-info">
-              {notify.text}
-            </Link>
-          </div>
+          <Link
+            to={`/profile/${notify.user._id}`}
+            className="me-2 fw-semibold nav-link d-inline-flex"
+          >
+            {notify.user.username}
+            {notify.user.verified ? (
+              <BsCheckCircleFill className="ms-1 my-auto fs-8 text-primary" />
+            ) : (
+              ""
+            )}
+          </Link>
+          <Link
+            to={notify.url}
+            className="fs-7 nav-link d-inline-flex text-info"
+          >
+            {notify.text}
+          </Link>
           {notify.content && (
             <Link to={notify.url} className="fs-8 nav-link">
               {notify.content.length > 20 ? (
@@ -68,11 +69,11 @@ const Notify = ({ notify }) => {
             </Link>
           )}
         </div>
-        <div className="h-100 ms-auto">
-          {notify.image && (
+        {notify.image && (
+          <div className="h-100 ms-auto">
             <img className="image rounded-1" src={notify.image} />
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

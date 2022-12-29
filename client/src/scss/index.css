@@ -11843,13 +11843,15 @@ input:-internal-autofill-selected {
   }
 }
 .chat {
-  height: 90vh;
+  height: calc(94vh - 2rem);
 }
 .chat .user-chats-slider {
   overflow-x: scroll;
   -ms-scroll-snap-type: x mandatory;
       scroll-snap-type: x mandatory;
-  height: 10vh;
+  height: calc(15vh - 2rem);
+  min-height: calc(90px - 1rem);
+  overflow-y: hidden;
   align-items: center;
 }
 .chat .user-chats-slider .active {
@@ -11871,7 +11873,7 @@ input:-internal-autofill-selected {
   background: var(--bs-primary);
 }
 .chat .conversation {
-  height: 80vh !important;
+  height: calc(100% - 2rem) !important;
 }
 .chat .conversation .header {
   border-bottom: 1px solid var(--bs-light);
@@ -12032,6 +12034,8 @@ input:-internal-autofill-selected {
 .app-logo .box .fading-line {
   height: 28px;
   width: 3.5px;
+  flex-grow: 1;
+  flex-shrink: 0;
 }
 .app-logo .box .fading-line:nth-child(2) {
   margin-top: 2px;

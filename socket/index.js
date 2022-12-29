@@ -43,9 +43,7 @@ io.on("connection", (socket) => {
       });
     }
   });
-  // socket.on('likeComment',data =>{
-  //   const ids =
-  // })
+
   socket.on("add-conversation", (data) => {
     const clients = activeUsers.filter((user) =>
       data.members.includes(user.userId)
@@ -84,7 +82,6 @@ io.on("connection", (socket) => {
     const clients = activeUsers.filter((user) =>
       data.recipients.includes(user.userId)
     );
-    // console.log(remove)
     if (clients.length > 0) {
       clients.forEach((client) => {
         socket.to(`${client.socketId}`).emit("removeNotify-client", data);

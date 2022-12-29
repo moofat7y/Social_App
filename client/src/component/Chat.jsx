@@ -1,17 +1,19 @@
-import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import api from "../api/api";
 import SliderChatsLoading from "./SliderChatsLoading";
 import { BsPerson } from "react-icons/bs";
+import { useDispatch } from "react-redux";
 
 const Chat = ({ chatData, currentUser, isActive }) => {
   const userChatId = chatData.members.filter(
     (id) => id !== currentUser.userData._id
   );
+  const dispatch = useDispatch();
   const [userChat, setUserChat] = useState(null);
   const [loadding, setLoadding] = useState(false);
+  const { userId } = useParams();
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -23,6 +25,9 @@ const Chat = ({ chatData, currentUser, isActive }) => {
         });
         setLoadding(false);
         setUserChat(data.user);
+        data.user._id === userId
+          ? dispatch({ type: "SELECT_CHAT", payload: data.user })
+          : "";
       } catch (error) {
         setLoadding(false);
       }
@@ -37,6 +42,7 @@ const Chat = ({ chatData, currentUser, isActive }) => {
     return (
       <Link
         to={`/chats/${userChatId}`}
+        onClick={() => dispatch({ type: "SELECT_CHAT", payload: userChat })}
         className="user-cont nav-link d-flex flex-column align-items-center"
       >
         <div

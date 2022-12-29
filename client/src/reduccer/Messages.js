@@ -1,7 +1,10 @@
-const messages = (state = { chatId: "", messages: [] }, action) => {
+const messages = (
+  state = { chatId: "", messages: [], chatOwner: "" },
+  action
+) => {
   switch (action.type) {
     case "GET_MESSAGES":
-      return action.payload;
+      return { ...state, ...action.payload };
     case "SEND_MESSAGE":
       return {
         ...state,
@@ -10,9 +13,10 @@ const messages = (state = { chatId: "", messages: [] }, action) => {
             ? [...state.messages, action.payload]
             : state.messages,
       };
-
+    case "SELECT_CHAT":
+      return { ...state, messages: [], chatOwner: action.payload };
     case "SELECTED_NULL":
-      return { chatId: "", messages: [] };
+      return { chatId: "", messages: [], chatOwner: "" };
     default:
       return state;
   }

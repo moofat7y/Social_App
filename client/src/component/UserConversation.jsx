@@ -6,29 +6,8 @@ import { BsCheckCircleFill, BsPerson } from "react-icons/bs";
 import { useSelector } from "react-redux";
 import SendMessage from "./SendMessage";
 const UserConversation = ({ currentChat, isActive }) => {
-  const [user, setUser] = useState(null);
   const scroll = useRef();
   const { Messages, auth } = useSelector((state) => state);
-  const userId = currentChat?.members.find((id) => id !== auth?.userData._id);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const { data } = await api.get(`/user/${userId}`, {
-          headers: {
-            Authorization: auth.token,
-          },
-        });
-        setUser(data.user);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    if (userId) {
-      fetchUser();
-    }
-  }, [userId]);
   useEffect(() => {
     scroll.current?.scrollIntoView({ behavior: "smooth" });
   }, [Messages.messages.length]);
@@ -36,12 +15,12 @@ const UserConversation = ({ currentChat, isActive }) => {
     <div className="rounded-4 bg-white d-flex flex-column h-100">
       <div className="header py-2 px-3 rounded-4 shadow-sm d-flex align-items-center">
         <Link
-          to={`/profile/${user?._id}`}
+          to={`/profile/${Messages.chatOwner?._id}`}
           className={`profilePic nav-link me-2 d-flex align-items-center justify-content-center border border-2 border-primary rounded-circle`}
         >
-          {user?.profilePicture ? (
+          {Messages.chatOwner?.profilePicture ? (
             <img
-              src={user?.profilePicture.url}
+              src={Messages.chatOwner?.profilePicture.url}
               className="w-100 h-100 rounded-circle"
               alt=""
             />
@@ -51,8 +30,8 @@ const UserConversation = ({ currentChat, isActive }) => {
         </Link>
         <div className="username d-flex flex-column justify-content-start">
           <span className="d-flex lh-sm">
-            {user?.username}
-            {user?.verified ? (
+            {Messages.chatOwner?.username}
+            {Messages.chatOwner?.verified ? (
               <BsCheckCircleFill className="ms-1 fs-8 text-primary my-auto" />
             ) : (
               ""

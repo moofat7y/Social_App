@@ -78,7 +78,7 @@ export const likePost = (postId, token, socket, userId) => async (dispatch) => {
       }
     );
     const msg = {
-      id: data.post.userId._id,
+      id: userId,
       text: "liked your post",
       recipients: [data.post.userId._id],
       url: `/post/${data.post._id}`,
@@ -304,9 +304,7 @@ export const getSelectedUserChat = (token, currentChat) => async (dispatch) => {
       type: "GET_MESSAGES",
       payload: { chatId: currentChat, messages: data.messages },
     });
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 // SEND message to user

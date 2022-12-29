@@ -50,7 +50,11 @@ exports.deleteNotify = async (req, res, next) => {
   const url = req.query.url;
 
   try {
-    const notify = await Notify.find({ id, url }).deleteMany();
+    const notify = await Notify.find({
+      id,
+      url,
+      user: req.userId,
+    }).deleteMany();
 
     return res.status(200).json({ notify });
   } catch (err) {

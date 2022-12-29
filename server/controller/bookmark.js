@@ -28,7 +28,6 @@ exports.createAndDeleteBookMark = async (req, res, next) => {
       res.status(201).json({ newBookMark });
     }
   } catch (error) {
-    console.log(error);
     if (!error.statusCode) {
       error.statusCode = 500;
     }

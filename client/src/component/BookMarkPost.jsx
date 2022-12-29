@@ -15,7 +15,9 @@ const BookMarkPost = ({ post }) => {
             className="w-100 h-100 position-absolute"
           />
         ) : (
-          <div className="w-100 position-absolute h-100 bg-primary"></div>
+          <div className="w-100 position-absolute p-2 h-100 bg-white d-flex align-items-center justify-content-center">
+            <p className="fs-8 mb-0">{post.postId.desc}</p>
+          </div>
         )}
       </Link>
     </div>

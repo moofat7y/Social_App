@@ -17,8 +17,8 @@ const DiscoverPost = ({ post }) => {
             className="w-100 h-100 position-absolute"
           />
         ) : (
-          <div className="w-100 p-2 top-0 start-0 position-absolute h-100 bg-primary">
-            <p className="fs-8">{post.desc}</p>
+          <div className="w-100 p-2 top-0 start-0 position-absolute h-100 bg-white d-flex align-items-center justify-content-center">
+            <p className="fs-8 mb-0">{post.desc}</p>
           </div>
         )}
 

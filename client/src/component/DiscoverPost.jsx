@@ -17,10 +17,12 @@ const DiscoverPost = ({ post }) => {
             className="w-100 h-100 position-absolute"
           />
         ) : (
-          <div className="w-100 position-absolute h-100 bg-primary"></div>
+          <div className="w-100 p-2 top-0 start-0 position-absolute h-100 bg-primary">
+            <p className="fs-8">{post.desc}</p>
+          </div>
         )}
 
-        <div className="post-reactions d-flex justify-content-center align-items-center w-100 h-100 position-absolute">
+        <div className="post-reactions top-0 start-0 d-flex justify-content-center align-items-center w-100 h-100 position-absolute">
           <span className="likes d-block me-3 text-center d-flex flex-column justify-content-center">
             <BsHeartFill className="fs-4 text-primary" />
             <span className="text-info">{post.likes.length}</span>

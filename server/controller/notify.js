@@ -35,7 +35,7 @@ exports.updatedIsRead = async (req, res, next) => {
       notifyId,
       { isRead: true },
       { new: true }
-    ).populate("user", "profilePic verified uesrname");
+    ).populate("user", "profilePicture verified username");
     res.status(200).json({ notify });
   } catch (error) {
     if (!error.statusCode) {

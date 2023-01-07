@@ -12,7 +12,7 @@ router.patch(
       "username",
       "Invalid username. Allowed characters are a-z, A-Z, 0-9, (_,-,.)."
     )
-      .matches(/^(?!(?:[^.]*\.){2})[A-Za-z][A-Za-z0-9.]{3,19}$/)
+      .matches(/^(?!(?:[^._-]*\.){2})[A-Za-z][A-Za-z0-9._-]{3,19}$/)
       .custom(async (value, { req }) => {
         const user = await User.findOne({ username: value });
         if (user) {

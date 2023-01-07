@@ -24,7 +24,7 @@ const SignUp = ({ setActiveView }) => {
     password: "",
   });
   const validateUserName = (username) => {
-    const pattern = /^(?!(?:[^.]*\.){2})[A-Za-z][A-Za-z0-9.]{3,19}$/;
+    const pattern = /^(?!(?:[^._-]*\.){2})[A-Za-z][A-Za-z0-9._-]{3,19}$/;
     setSignUpData((prev) => {
       return { ...prev, username: username };
     });

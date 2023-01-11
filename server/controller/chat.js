@@ -14,9 +14,18 @@ exports.createNewChat = async (req, res, next) => {
       error.statusCode = 422;
       throw error;
     }
-    const newChat = new Chat({ members: [req.userId, reciverId] });
-    const result = await newChat.save();
-    res.status(201).json({ result });
+    const exsitsChat = await Chat.find({
+      members: { $all: [req.userId, reciverId] },
+    });
+    if (exsitsChat.length > 0) {
+      const error = new Error("chat is exsist before");
+      error.statusCode = 422;
+      throw error;
+    } else {
+      const newChat = new Chat({ members: [req.userId, reciverId] });
+      const result = await newChat.save();
+      res.status(201).json({ result });
+    }
   } catch (err) {
     if (!err.statusCode) {
       err.statusCode = 500;

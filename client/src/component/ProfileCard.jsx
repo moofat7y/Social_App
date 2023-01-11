@@ -11,6 +11,7 @@ const ProfileCard = ({ state }) => {
   const conversation = useSelector((state) => state.UserConversations);
   const [modalShow, setModalShow] = useState(false);
   const [loadding, setLoadding] = useState(false);
+  const [messageLoading, setMessageLoading] = useState(false);
   const socket = useSelector((state) => state.socketReduccer);
   const navigate = useNavigate();
   const [followedByMe, setFollowedByMe] = useState(
@@ -41,10 +42,13 @@ const ProfileCard = ({ state }) => {
 
   const onMessageClicked = async (e) => {
     e.preventDefault();
+    setMessageLoading(true);
     if (!myConversation) {
       await dispatch(AddConversation(user.token, state?.user._id, socket));
+      setMessageLoading(false);
       navigate(`/chats/${state.user._id}`);
     } else {
+      setMessageLoading(false);
       navigate(`/chats/${state.user._id}`);
     }
   };
@@ -135,7 +139,20 @@ const ProfileCard = ({ state }) => {
               className="d-inline-block w-100"
               onSubmit={(e) => onMessageClicked(e)}
             >
-              <button type="submit" className="btn bg-light w-100 text-primary">
+              <button
+                type="submit"
+                className="btn bg-light w-100 text-primary"
+                disabled={messageLoading ? true : false}
+              >
+                {messageLoading ? (
+                  <span
+                    className="spinner-border me-2 spinner-border-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                ) : (
+                  ""
+                )}
                 Message
               </button>
             </form>
